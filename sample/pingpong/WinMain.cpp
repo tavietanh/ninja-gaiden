@@ -4,7 +4,7 @@
 int WINAPI WinMain(HINSTANCE h, HINSTANCE p, LPTSTR a, int c)
 {
 	MSG msg;
-	Game game(h,300,600,"PingPong");
+	Game game(h,600,300,"PingPong");
 	if(!game.InitWindow())
 	{
 		MessageBox(NULL,"Can't init game","Error",MB_OK);

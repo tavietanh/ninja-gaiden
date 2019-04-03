@@ -47,7 +47,7 @@ bool Game::InitWindow()
 		return false;
 	ShowWindow(this->hWnd, SW_NORMAL);
 	UpdateWindow(this->hWnd);
-	graphic = new MGraphic(this->hWnd, 300, 600);
+	graphic = new MGraphic(this->hWnd, 600, 300);
 
 
 	if (!graphic->InitD3D())
@@ -75,7 +75,7 @@ void Game::Update(float gameTime)
 	// xet va cham voi bat
 	if (Check(bat->rect, ball->rect))
 	{
-		ball->dy = -ball->dy;
+		ball->dx = -ball->dx;
 	}
 }
 void Game::Render()

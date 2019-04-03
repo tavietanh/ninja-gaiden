@@ -14,9 +14,9 @@ void Ball::Init(MContent* content)
 void Ball::Update(float gameTime)
 {
 	float speed = 5;
-	if(position.x < 0 || position.x + 40.0 > 300)
+	if(position.x < 0 || position.x + 40.0 > 600)
 		dx = -dx;
-	if(position.y < 0 || position.y + 40.0 > 600)
+	if(position.y < 0 || position.y + 40.0 > 300)
 		dy = -dy;
 	position.x += dx * speed;
 	position.y += dy * speed;
