@@ -5,6 +5,7 @@
 #include "MKeyboard.h"
 #include "Ball.h"
 #include "Bat.h"
+#include "Collision.h"
 //RSManager* RSManager::instance = NULL;
 class Game
 {
@@ -33,7 +34,7 @@ private:
 	Ball* ball;
 	//Khai báo vợt banh
 	Bat* bat;
-
+	Collision* collision;
 	bool Check(RECT r1, RECT r2)
 	{
 		return !(r1.left + r1.right < r2.left || r1.top + r1.bottom < r2.top || r2.left + r2.right < r1.left || r2.top + r2.bottom < r1.top);

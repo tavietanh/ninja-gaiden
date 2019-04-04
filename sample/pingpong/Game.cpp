@@ -59,6 +59,7 @@ bool Game::InitWindow()
 void Game::InitGame()
 {
 	ball = new Ball();
+	collision = new Collision();
 	ball->Init(content);
 	bat = new Bat();
 	bat->Init(content);
@@ -71,12 +72,16 @@ void Game::Update(float gameTime)
 	ball->Update(gameTime);
 	keyboard->GetState();
 	bat->Update(gameTime, keyboard);
-
+	//if (collision->AABBCheck(collision->box(ball->rect,0),collision->box(bat->rect,0))) ball->dx = -ball->dx;
+	float normalx, normaly;
+	float collisiontime = collision->SweptAABB(collision->box(ball->rect,ball->speed), collision->box(bat->rect,0),  normalx,  normaly);
+	if (0<collisiontime<1)
+		ball->dx = -ball->dx;
 	// xet va cham voi bat
-	if (Check(bat->rect, ball->rect))
+	/*if (Check(bat->rect, ball->rect))
 	{
 		ball->dx = -ball->dx;
-	}
+	}*/
 }
 void Game::Render()
 {
