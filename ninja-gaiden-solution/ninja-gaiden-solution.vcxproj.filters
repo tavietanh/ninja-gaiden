@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{61640774-184a-4600-bd48-41dd3b3b2641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Camera">
+      <UniqueIdentifier>{bc4c116c-b582-4bae-b8d3-7dfaf5d5e23b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Global">
+      <UniqueIdentifier>{0739b779-2aa3-4344-a3ce-74eca6c4247d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Collision">
+      <UniqueIdentifier>{c53180c0-de6e-4194-a2d1-df58afa362eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Graphic">
+      <UniqueIdentifier>{80de692f-2f99-4ba7-a118-3a5c68d050e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{6244719a-93ae-433c-861e-032a8bb2d4c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input">
+      <UniqueIdentifier>{941bd019-e477-4cae-bbae-59791c505cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameTime">
+      <UniqueIdentifier>{d34644fa-a171-4a9a-80fc-b66cae87aa0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{93bdcb71-6bd7-45a9-8d70-e7891578c7c3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CCamera.h">
+      <Filter>Framework\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CGlobal.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EIDSceneGame.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ESpriteEffect.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ESpriteID.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameworkDefine.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SweptAABB.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimationDx9.h">
+      <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpriteDx9.h">
+      <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CSurfaceDx9.h">
+      <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CTextureDx9.h">
+      <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManagerDx9.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CInputDx9.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameTimeDx9.h">
+      <Filter>Framework\GameTime</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeSpanDx9.h">
+      <Filter>Framework\GameTime</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CGlobal.cpp">
+      <Filter>Framework\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimationDx9.cpp">
+      <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpriteDx9.cpp">
+      <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CSurfaceDx9.cpp">
+      <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CTextureDx9.cpp">
+      <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManagerDx9.cpp">
+      <Filter>Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CInputDx9.cpp">
+      <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameTimeDx9.cpp">
+      <Filter>Framework\GameTime</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeSpanDx9.cpp">
+      <Filter>Framework\GameTime</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Framework\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
