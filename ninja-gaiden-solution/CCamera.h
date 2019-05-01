@@ -31,7 +31,7 @@ public:
 	bool IsGamePause() { return m_isPause; }
 	void setLockWidth(bool _isLock) { m_isLockWidth = _isLock; }
 	void setLockHeight(bool _isLock) { m_isLockHeight = _isLock; }
-	void readAutoRunScript(const char* filePath);
+
 	static Camera*		getInstance();
 	void				UpdateCamera(D3DXVECTOR3* cameramanLocation);
 	D3DXMATRIX			GetMatrixTranslate();

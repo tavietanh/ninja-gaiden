@@ -127,19 +127,26 @@
     <ClInclude Include="CGameTimeDx9.h" />
     <ClInclude Include="CGlobal.h" />
     <ClInclude Include="CInputDx9.h" />
+    <ClInclude Include="CObjectDx9.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CSpriteDx9.h" />
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
     <ClInclude Include="CTimeSpanDx9.h" />
+    <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="EIDSceneGame.h" />
     <ClInclude Include="ESpriteEffect.h" />
     <ClInclude Include="ESpriteID.h" />
     <ClInclude Include="FrameworkDefine.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="EDirection.h" />
+    <ClInclude Include="Ninja.h" />
+    <ClInclude Include="NinjaSpirte.h" />
     <ClInclude Include="SceneManagerDx9.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="SweptAABB.h" />
+    <ClInclude Include="TestSpriteState.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAnimationDx9.cpp" />
@@ -148,12 +155,18 @@
     <ClCompile Include="CGameTimeDx9.cpp" />
     <ClCompile Include="CGlobal.cpp" />
     <ClCompile Include="CInputDx9.cpp" />
+    <ClCompile Include="CObjectDx9.cpp" />
     <ClCompile Include="CSpriteDx9.cpp" />
     <ClCompile Include="CSurfaceDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
     <ClCompile Include="CTimeSpanDx9.cpp" />
+    <ClCompile Include="DynamicObject.cpp" />
+    <ClCompile Include="Ninja.cpp" />
+    <ClCompile Include="NinjaSpirte.cpp" />
     <ClCompile Include="SceneManagerDx9.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="TestSpriteState.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

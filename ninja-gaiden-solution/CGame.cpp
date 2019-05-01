@@ -168,7 +168,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
 
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
-
+	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE));
 	return true;
 }
 
@@ -210,17 +210,12 @@ void CGame::Run()
 
 				m_lpDirect3DDevice->Clear(0, 0, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 
-				/*if (second > 500)
-				{
-				//OutputDebugString(fps);
-				SetWindowText(m_handleWindow, fps);
-				second = 0;
-				}*/
+		
 
 				if (m_lpDirect3DDevice->BeginScene())
 				{
 					D3DXMATRIX oldMatrix;
-
+					
 					m_lpSpriteDirect3DHandle->GetTransform(&oldMatrix);
 					m_lpSpriteDirect3DHandle->SetTransform(&Camera::getInstance()->GetMatrixTranslate());
 					m_lpSpriteDirect3DHandle->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_SORT_DEPTH_BACKTOFRONT);

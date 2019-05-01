@@ -37,8 +37,26 @@
     <Filter Include="Framework\GameTime">
       <UniqueIdentifier>{d34644fa-a171-4a9a-80fc-b66cae87aa0d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene">
+    <Filter Include="Game Object">
+      <UniqueIdentifier>{444b8921-1b94-4bf8-88ee-a0db5106330f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Tile">
+      <UniqueIdentifier>{3a095b4e-cc69-4586-8a1c-80613e245638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScene">
+      <UniqueIdentifier>{cbb7f64f-ff1d-463f-94d9-b041afd3d7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScene\Scene">
       <UniqueIdentifier>{93bdcb71-6bd7-45a9-8d70-e7891578c7c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Ninja">
+      <UniqueIdentifier>{27cd95ef-297b-4285-aa2a-0ef8116d7735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Object">
+      <UniqueIdentifier>{ec137bdf-fc95-43a9-8989-910084a11bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Ninja\Sprite">
+      <UniqueIdentifier>{40185270-fa26-4e6e-84d6-36179a820417}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,10 +97,10 @@
       <Filter>Framework\Graphic</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Framework\Scene</Filter>
+      <Filter>GameScene\Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneManagerDx9.h">
-      <Filter>Framework\Scene</Filter>
+      <Filter>GameScene\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CInputDx9.h">
       <Filter>Framework\Input</Filter>
@@ -98,6 +116,27 @@
     </ClInclude>
     <ClInclude Include="SpriteManager.h">
       <Filter>Framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Game Object\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TestSpriteState.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ninja.h">
+      <Filter>Game Object\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectDx9.h">
+      <Filter>Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicObject.h">
+      <Filter>Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaSpirte.h">
+      <Filter>Game Object\Ninja\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="EDirection.h">
+      <Filter>Framework\Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +156,7 @@
       <Filter>Framework\Graphic</Filter>
     </ClCompile>
     <ClCompile Include="SceneManagerDx9.cpp">
-      <Filter>Framework\Scene</Filter>
+      <Filter>GameScene\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CInputDx9.cpp">
       <Filter>Framework\Input</Filter>
@@ -139,6 +178,24 @@
     </ClCompile>
     <ClCompile Include="SpriteManager.cpp">
       <Filter>Framework\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Game Object\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="TestSpriteState.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Ninja.cpp">
+      <Filter>Game Object\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectDx9.cpp">
+      <Filter>Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicObject.cpp">
+      <Filter>Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaSpirte.cpp">
+      <Filter>Game Object\Ninja\Sprite</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

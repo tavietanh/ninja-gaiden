@@ -45,7 +45,7 @@ public:
 	CSpriteDx9(const CSpriteDx9& Sprite);
 	~CSpriteDx9();
 	CAnimationDx9*			getAnimation();
-	void					LoadContent(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR fileName, int Column, int Row, int Total, D3DXCOLOR TransparentColor = 0xFFFF00FF);
+	void					LoadContent(LPDIRECT3DDEVICE9 lpDirectDevice, LPCSTR fileName, int Column, int Row, int Total, D3DXCOLOR TransparentColor = 0xFFFFA3B1);
 	void					Release();
 	void					Render(LPD3DXSPRITE spriteHandle, D3DXVECTOR2 position, ESpriteEffect effect, float rotateAngle, float scale, float deep, D3DCOLOR color = 0xffffffff);
 	void					RenderWithoutTransform(LPD3DXSPRITE spriteHandle, D3DXVECTOR2 position, ESpriteEffect effect, float rotateAngle, float scale, float deep, D3DCOLOR color = 0xffffffff);

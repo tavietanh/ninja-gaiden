@@ -37,7 +37,8 @@ CSpriteDx9* SpriteManager::getSprite(eSpriteID eID)
 
 void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 {
-
+	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\1.png", eSpriteID::SPRITE_MAP_1, 79, 1, 79);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_run.png", eSpriteID::SPRITE_NINJA_RUN, 3, 1, 3);
 }
 
 void SpriteManager::Release()

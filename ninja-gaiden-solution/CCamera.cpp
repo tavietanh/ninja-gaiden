@@ -18,16 +18,7 @@ Camera::Camera()
 	m_tempLockHeight = false;
 }
 
-void Camera::readAutoRunScript(const char* filePath)
-{
-	fstream fLog(filePath, ios::in);
-	fLog >> m_isCheckFlagX;
-	fLog >> m_isCheckFlagY;
-	fLog >> m_flagStartAutoRun.x;
-	fLog >> m_flagStartAutoRun.y;
-	fLog >> m_flagStopAutoRun.x;
-	fLog >> m_flagStopAutoRun.y;
-}
+
 
 void Camera::Reset()
 {
@@ -68,14 +59,14 @@ RECT Camera::getBound()
 
 void Camera::UpdateCamera(D3DXVECTOR3* cameramanLocation)
 {
-	if (cameramanLocation->x > SCREEN_WIDTH / 2 && !m_isLockWidth)
+	if (cameramanLocation->x > SCREEN_WIDTH )
 	{
 		if (m_previousPosition.x > (float)((int)(-(cameramanLocation->x - SCREEN_WIDTH / 2))))
 		{
 			m_matrixTranslate._41 = (float)((int)(-(cameramanLocation->x - SCREEN_WIDTH / 2)));
 		}
 	}
-	if (cameramanLocation->y > SCREEN_HEIGHT / 2 && !m_isLockHeight && !m_tempLockHeight)
+	if (cameramanLocation->y > SCREEN_HEIGHT)
 	{
 		if (m_previousPosition.y < (float)(SCREEN_HEIGHT + (int)((cameramanLocation->y - SCREEN_HEIGHT / 2))))
 		{
@@ -84,34 +75,7 @@ void Camera::UpdateCamera(D3DXVECTOR3* cameramanLocation)
 	}
 	this->m_previousPosition.x = m_matrixTranslate._41;
 	this->m_previousPosition.y = m_matrixTranslate._42;
-	if (m_isCheckFlagX)
-	{
-		if ((getBound().right - SCREEN_WIDTH / 2) > m_flagStartAutoRun.x)
-		{
-			m_matrixTranslate._41 -= 1;
-			m_isPause = true;
-		}
-		if ((getBound().right - SCREEN_WIDTH / 2) >= m_flagStopAutoRun.x)
-		{
-			m_isCheckFlagX = false;
-			m_isLockWidth = true;
-			m_isPause = false;
-		}
-	}
-	if (m_isCheckFlagY)
-	{
-		if ((getBound().top - SCREEN_HEIGHT / 2) > m_flagStartAutoRun.y)
-		{
-			m_matrixTranslate._42 += 1;
-			m_isPause = true;
-		}
-		if ((getBound().top - SCREEN_HEIGHT / 2) >= m_flagStopAutoRun.y)
-		{
-			m_isCheckFlagY = false;
-			m_isLockHeight = true;
-			m_isPause = false;
-		}
-	}
+	
 }
 
 D3DXMATRIX Camera::GetMatrixTranslate()
