@@ -262,7 +262,7 @@ namespace MapEditor
         public static int WIDTH_OF_TILE = 16;
         public static int HEIGHT_OF_TILE = 16;
         public static bool GRIDLINE = false;
-        public static int WIDHT_MAP =  448;
+        public static int WIDHT_MAP =  2048;
         public static int HEIGHT_MAP = 224;
         public static int WIDTH_SCREEN = 256;
         public static int HEIGHT_SCREEN = 224;
@@ -270,9 +270,12 @@ namespace MapEditor
         public static List<OBJECT> listObject;
         public static bool IsExportXml = false;
         public static bool IsAlign = false;
-        public static int WIDHT_OF_VIRTUALOBJECT = 16;
-        public static int HEIGHT_OF_VIRTUALOBJECT = 16;
-        public static CNode quadTree = null;
+        public static int WIDHT_OF_VIRTUALOBJECT = 8;
+        public static int HEIGHT_OF_VIRTUALOBJECT = 8;
+        public static CNode Grid = null;
+        public static int SIZE_CELLS = 256;
+        public static int COL = WIDHT_MAP / SIZE_CELLS;
+        public static int ROW = HEIGHT_MAP / SIZE_CELLS;
         public static int Count = -1;
         public static Rectangle gridLine = new Rectangle();
         public static Rectangle virtualObject = new Rectangle();

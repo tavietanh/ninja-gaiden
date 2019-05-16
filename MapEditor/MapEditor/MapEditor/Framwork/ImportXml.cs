@@ -55,7 +55,7 @@ namespace MapEditor.Framwork
             Support.WIDHT_MAP = int.Parse(rootNode.Attributes["Width"].Value);
             Support.HEIGHT_MAP = int.Parse(rootNode.Attributes["Height"].Value);
             Support.MAPNAME = rootNode.Attributes["Name"].Value;
-
+            
             XmlNodeList nodeList;
             nodeList = xmlDocument.GetElementsByTagName("Object");
 

@@ -193,17 +193,21 @@ namespace MapEditor
 
                 Support.IsImport = false;
 
-                if (Support.quadTree == null)
-                {
-                    Support.quadTree = new CNode(0, PositionOfNode.TopLeft, new RECTANGLE(0, 8192, 8192, 8192));
-                    for (int i = 0; i < Support.listObject.Count; ++i)
-                    {
-                        Support.quadTree.InsertObject(Support.quadTree, Support.listObject[i]);
-                    }
-                }
+
                 ExportXml.getInstance().MWriter.WriteStartDocument();
                 ExportXml.getInstance().WriteInfomationForMap();
-                ExportXml.getInstance().writeQuadtreeToXml(Support.quadTree, ExportXml.getInstance().MWriter);
+                if (Support.Grid == null)
+                {
+                    for (int col = 0; col < Support.COL; col++)
+                    {
+                        Support.Grid = new CNode(col, new RECTANGLE(col*256, 256, 256, 256));
+                        for (int i = 0; i < Support.listObject.Count; ++i)
+                        {
+                            Support.Grid.InsertObject(Support.Grid, Support.listObject[i]);
+                        }
+                        ExportXml.getInstance().writeGridToXml(Support.Grid, ExportXml.getInstance().MWriter);
+                    }
+                }
                 ExportXml.getInstance().MWriter.WriteEndDocument();
                 ExportXml.getInstance().MWriter.Close();
 

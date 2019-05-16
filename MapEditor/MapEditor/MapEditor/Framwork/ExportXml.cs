@@ -74,37 +74,33 @@ namespace MapEditor.Framwork
             mWriter.WriteEndElement();
         }
 
-        public void writeQuadtreeToXml(CNode quadTree, XmlWriter writer)
+        public void writeGridToXml(CNode Grid, XmlWriter writer)
         {
-            if (quadTree != null)
+            if (Grid != null)
             {
                 mWriter.WriteStartElement("Node");
-                mWriter.WriteAttributeString("Id", Convert.ToString(quadTree.ID));
-                mWriter.WriteAttributeString("X", Convert.ToString(quadTree.Bound.cX));
-                mWriter.WriteAttributeString("Y", Convert.ToString(quadTree.Bound.cY));
-                mWriter.WriteAttributeString("Width", Convert.ToString(quadTree.Bound.width));
-                mWriter.WriteAttributeString("Height", Convert.ToString(quadTree.Bound.height));
-
-                if (quadTree.ListObject.Count == 0)
+                mWriter.WriteAttributeString("Id", Convert.ToString(Grid.ID));
+                mWriter.WriteAttributeString("X", Convert.ToString(Grid.Bound.cX));
+                mWriter.WriteAttributeString("Y", Convert.ToString(Grid.Bound.cY));
+                mWriter.WriteAttributeString("Width", Convert.ToString(Grid.Bound.width));
+                mWriter.WriteAttributeString("Height", Convert.ToString(Grid.Bound.height));
+                if(Grid.ListObject.Count==0)
                 {
-                    writeQuadtreeToXml(quadTree.Tl, mWriter);
-                    writeQuadtreeToXml(quadTree.Tr, mWriter);
-                    writeQuadtreeToXml(quadTree.Bl, mWriter);
-                    writeQuadtreeToXml(quadTree.Br, mWriter);
+                    writeGridToXml(Grid.Next, mWriter);
                 }
-                else
+                if (Grid.ListObject.Count != 0)
                 {
                     mWriter.WriteStartElement("Objects"); 
-                    for (int i = 0; i < quadTree.ListObject.Count; ++i)
+                    for (int i = 0; i < Grid.ListObject.Count; ++i)
                     {
                         mWriter.WriteStartElement("Object");
-                        mWriter.WriteAttributeString("Type", Convert.ToString(quadTree.ListObject[i].Type));
-                        mWriter.WriteAttributeString("Id", Convert.ToString(quadTree.ListObject[i].ID));
-                        mWriter.WriteAttributeString("Index", Convert.ToString(quadTree.ListObject[i].Index));
-                        mWriter.WriteAttributeString("X", Convert.ToString(quadTree.ListObject[i].Position.cX));
-                        mWriter.WriteAttributeString("Y", Convert.ToString(quadTree.ListObject[i].Position.cY));
-                        mWriter.WriteAttributeString("Width", Convert.ToString(quadTree.ListObject[i].Bound.width));
-                        mWriter.WriteAttributeString("Height", Convert.ToString(quadTree.ListObject[i].Bound.height));
+                        mWriter.WriteAttributeString("Type", Convert.ToString(Grid.ListObject[i].Type));
+                        mWriter.WriteAttributeString("Id", Convert.ToString(Grid.ListObject[i].ID));
+                        mWriter.WriteAttributeString("Index", Convert.ToString(Grid.ListObject[i].Index));
+                        mWriter.WriteAttributeString("X", Convert.ToString(Grid.ListObject[i].Position.cX));
+                        mWriter.WriteAttributeString("Y", Convert.ToString(Grid.ListObject[i].Position.cY));
+                        mWriter.WriteAttributeString("Width", Convert.ToString(Grid.ListObject[i].Bound.width));
+                        mWriter.WriteAttributeString("Height", Convert.ToString(Grid.ListObject[i].Bound.height));
 
                         mWriter.WriteEndElement();
                     }
