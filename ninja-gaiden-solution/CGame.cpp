@@ -168,7 +168,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
 
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
-	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE));
+	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,1));
 	return true;
 }
 
@@ -201,16 +201,19 @@ void CGame::Run()
 			static int second;
 			second += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
 
-			if (m_fps >= 1000 / 60)
+			if (m_fps >= 1000.0 / 60)
 			{
 				
-
+				sprintf(fps, "FPS: %.3f \n", 1000.0 / m_fps);
 				SceneManagerDx9::getInstance()->HandleInput();
 				SceneManagerDx9::getInstance()->Update();
 
 				m_lpDirect3DDevice->Clear(0, 0, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
-
-		
+				if (second > 500)
+				{
+				SetWindowText(m_handleWindow, fps);
+				second = 0;
+				}
 
 				if (m_lpDirect3DDevice->BeginScene())
 				{

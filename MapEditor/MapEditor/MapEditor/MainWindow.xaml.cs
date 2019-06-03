@@ -198,14 +198,21 @@ namespace MapEditor
                 ExportXml.getInstance().WriteInfomationForMap();
                 if (Support.Grid == null)
                 {
-                    for (int col = 0; col < Support.COL; col++)
+                    int count = 0;
+                    for (int row = 1; row < Support.ROW; row++)
                     {
-                        Support.Grid = new CNode(col, new RECTANGLE(col*256, 256, 256, 256));
-                        for (int i = 0; i < Support.listObject.Count; ++i)
+                        for (int col = 0; col < Support.COL; col++)
                         {
-                            Support.Grid.InsertObject(Support.Grid, Support.listObject[i]);
+                            Support.Grid = new CNode(count++, new RECTANGLE(col * Support.SIZE_CELLS_WIDTH, 
+                                                                        row*Support.SIZE_CELLS_HEIGHT, 
+                                                                        Support.SIZE_CELLS_WIDTH, 
+                                                                        Support.SIZE_CELLS_HEIGHT));
+                            for (int i = 0; i < Support.listObject.Count; ++i)
+                            {
+                                Support.Grid.InsertObject(Support.Grid, Support.listObject[i]);
+                            }
+                            ExportXml.getInstance().writeGridToXml(Support.Grid, ExportXml.getInstance().MWriter);
                         }
-                        ExportXml.getInstance().writeGridToXml(Support.Grid, ExportXml.getInstance().MWriter);
                     }
                 }
                 ExportXml.getInstance().MWriter.WriteEndDocument();
@@ -627,7 +634,7 @@ namespace MapEditor
                 if (Support.map == null)
                 {
                     Support.map = new CMap(new BitmapImage(new Uri(openFileDialogSourcePicture.FileName, UriKind.Absolute)));
-                    Support.WIDHT_MAP = (int)(Support.map.BitMap.PixelWidth);
+                    Support.WIDTH_MAP = (int)(Support.map.BitMap.PixelWidth);
                     Support.HEIGHT_MAP = (int)(Support.map.BitMap.PixelHeight);
                     
                     if (Support.GRIDLINE == true)
@@ -642,7 +649,7 @@ namespace MapEditor
                         Support.IsExportXml = false;
                         ExportXml.getInstance().DestroyWriter();
                     }
-                    WorkspaceWorking.Width = Support.WIDHT_MAP;
+                    WorkspaceWorking.Width = Support.WIDTH_MAP;
                     WorkspaceWorking.Height = Support.HEIGHT_MAP;
                     Support.map.CreateTileMap();
                 }
@@ -855,7 +862,7 @@ namespace MapEditor
                     }
 
                     Support.map = new CMap(new BitmapImage(new Uri(pathToImage, UriKind.Relative)));
-                    Support.WIDHT_MAP = (int)(Support.map.BitMap.PixelWidth);
+                    Support.WIDTH_MAP = (int)(Support.map.BitMap.PixelWidth);
                     Support.HEIGHT_MAP = (int)(Support.map.BitMap.PixelHeight);
 
                     if (Support.GRIDLINE == true)
@@ -870,7 +877,7 @@ namespace MapEditor
                         Support.IsExportXml = false;
                         ExportXml.getInstance().DestroyWriter();
                     }
-                    WorkspaceWorking.Width = Support.WIDHT_MAP;
+                    WorkspaceWorking.Width = Support.WIDTH_MAP;
                     WorkspaceWorking.Height = Support.HEIGHT_MAP;
                     Support.map.CreateTileMap();
                 }

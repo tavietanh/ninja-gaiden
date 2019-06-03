@@ -78,7 +78,7 @@ namespace MapEditor.Algorithm
             }
             else
             {
-                this.m_bound = new RECTANGLE(Bound.cX + Support.SIZE_CELLS, Bound.cY, Support.SIZE_CELLS, Support.SIZE_CELLS);
+                this.m_bound = new RECTANGLE(Bound.cX, Bound.cY, Support.SIZE_CELLS_WIDTH, Support.SIZE_CELLS_HEIGHT);
             }
         }
 

@@ -4,6 +4,7 @@
 #include "CGameTimeDx9.h"
 #include "EIDSceneGame.h"
 #include "CInputDx9.h"
+#include "SceneManagerDx9.h"
 #include "FrameworkDefine.h"
 class SceneManagerDx9;
 

@@ -39,7 +39,7 @@ namespace MapEditor.Framwork
             {
                 if (mListElements != null)
                 {
-                    mCols = (int)(Support.WIDHT_MAP / Support.WIDTH_OF_TILE);
+                    mCols = (int)(Support.WIDTH_MAP / Support.WIDTH_OF_TILE);
                     mRows = (int)(Support.HEIGHT_MAP / Support.HEIGHT_OF_TILE);
                     if (mCols > 0 && mRows > 0)
                     {

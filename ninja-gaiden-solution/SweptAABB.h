@@ -2,7 +2,7 @@
 #define SWEPTAABB
 
 #include "d3d9.h"
-#include "Box.h"
+#include "CGlobal.h"
 #include <limits>
 
 using namespace std;
@@ -159,4 +159,4 @@ static float SweptAABB(BOX b1, BOX b2, float& normalx, float& normaly)
 	}
 }
 
-#endif#pragma once
+#endif

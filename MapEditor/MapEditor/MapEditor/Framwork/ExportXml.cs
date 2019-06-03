@@ -78,17 +78,12 @@ namespace MapEditor.Framwork
         {
             if (Grid != null)
             {
-                mWriter.WriteStartElement("Node");
+                mWriter.WriteStartElement("Cell");
                 mWriter.WriteAttributeString("Id", Convert.ToString(Grid.ID));
                 mWriter.WriteAttributeString("X", Convert.ToString(Grid.Bound.cX));
                 mWriter.WriteAttributeString("Y", Convert.ToString(Grid.Bound.cY));
                 mWriter.WriteAttributeString("Width", Convert.ToString(Grid.Bound.width));
                 mWriter.WriteAttributeString("Height", Convert.ToString(Grid.Bound.height));
-                if(Grid.ListObject.Count==0)
-                {
-                    writeGridToXml(Grid.Next, mWriter);
-                }
-                if (Grid.ListObject.Count != 0)
                 {
                     mWriter.WriteStartElement("Objects"); 
                     for (int i = 0; i < Grid.ListObject.Count; ++i)
@@ -125,7 +120,7 @@ namespace MapEditor.Framwork
         {
             mWriter.WriteStartElement("Map");
             mWriter.WriteAttributeString("Name", "1");
-            mWriter.WriteAttributeString("Width", Support.WIDHT_MAP.ToString());
+            mWriter.WriteAttributeString("Width", Support.WIDTH_MAP.ToString());
             mWriter.WriteAttributeString("Height", Support.HEIGHT_MAP.ToString());
             //mWriter.WriteEndElement();
         }

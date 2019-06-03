@@ -82,6 +82,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>MARKUP_STL</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -121,52 +122,108 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boss3.h" />
     <ClInclude Include="CAnimationDx9.h" />
     <ClInclude Include="CCamera.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGameTimeDx9.h" />
     <ClInclude Include="CGlobal.h" />
     <ClInclude Include="CInputDx9.h" />
     <ClInclude Include="CObjectDx9.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="CPhysicDx9.h" />
     <ClInclude Include="CSpriteDx9.h" />
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
     <ClInclude Include="CTimeSpanDx9.h" />
     <ClInclude Include="DynamicObject.h" />
+    <ClInclude Include="EDirectAttack.h" />
     <ClInclude Include="EIDSceneGame.h" />
+    <ClInclude Include="EnemyBrownBat.h" />
+    <ClInclude Include="EnemyEagle.h" />
+    <ClInclude Include="EnemyMachineGun.h" />
+    <ClInclude Include="EnemyPanther.h" />
+    <ClInclude Include="EnemyRocket.h" />
+    <ClInclude Include="EnemyRun.h" />
+    <ClInclude Include="EnemySword.h" />
+    <ClInclude Include="EnemyThrowSword.h" />
+    <ClInclude Include="EObjectID.h" />
+    <ClInclude Include="EObjectState.h" />
     <ClInclude Include="ESpriteEffect.h" />
     <ClInclude Include="ESpriteID.h" />
+    <ClInclude Include="ETypeObject.h" />
+    <ClInclude Include="FivePower.h" />
+    <ClInclude Include="Flames.h" />
     <ClInclude Include="FrameworkDefine.h" />
+    <ClInclude Include="Freeze.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="EDirection.h" />
+    <ClInclude Include="GifBird.h" />
+    <ClInclude Include="GifButerfly.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="IDDirection.h" />
+    <ClInclude Include="Markup.h" />
     <ClInclude Include="Ninja.h" />
     <ClInclude Include="NinjaSpirte.h" />
+    <ClInclude Include="Point1000.h" />
+    <ClInclude Include="Point500.h" />
     <ClInclude Include="SceneManagerDx9.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="SweptAABB.h" />
+    <ClInclude Include="TenPower.h" />
     <ClInclude Include="TestSpriteState.h" />
+    <ClInclude Include="ThrowStar.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="VirtualObject.h" />
+    <ClInclude Include="WindmilStar.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="CAnimationDx9.cpp" />
     <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGameTimeDx9.cpp" />
     <ClCompile Include="CGlobal.cpp" />
     <ClCompile Include="CInputDx9.cpp" />
     <ClCompile Include="CObjectDx9.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CPhysicDx9.cpp" />
     <ClCompile Include="CSpriteDx9.cpp" />
     <ClCompile Include="CSurfaceDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
     <ClCompile Include="CTimeSpanDx9.cpp" />
     <ClCompile Include="DynamicObject.cpp" />
+    <ClCompile Include="EnemyBrownBat.cpp" />
+    <ClCompile Include="EnemyEagle.cpp" />
+    <ClCompile Include="EnemyMachineGun.cpp" />
+    <ClCompile Include="EnemyPanther.cpp" />
+    <ClCompile Include="EnemyRocket.cpp" />
+    <ClCompile Include="EnemyRun.cpp" />
+    <ClCompile Include="EnemySword.cpp" />
+    <ClCompile Include="EnemyThrowSword.cpp" />
+    <ClCompile Include="FivePower.cpp" />
+    <ClCompile Include="Flames.cpp" />
+    <ClCompile Include="Freeze.cpp" />
+    <ClCompile Include="GifBird.cpp" />
+    <ClCompile Include="GifButerfly.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="Markup.cpp" />
     <ClCompile Include="Ninja.cpp" />
     <ClCompile Include="NinjaSpirte.cpp" />
+    <ClCompile Include="Point1000.cpp" />
+    <ClCompile Include="Point500.cpp" />
     <ClCompile Include="SceneManagerDx9.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="TenPower.cpp" />
     <ClCompile Include="TestSpriteState.cpp" />
+    <ClCompile Include="ThrowStar.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="VirtualObject.cpp" />
+    <ClCompile Include="WindmilStar.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

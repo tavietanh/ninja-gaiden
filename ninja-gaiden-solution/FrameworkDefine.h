@@ -1,9 +1,9 @@
 #ifndef FRAMEWORKDEFINE_H
 #define FRAMEWORKDEFINE_H
 
-#define SCREEN_HEIGHT 448
+#define SCREEN_HEIGHT 224
 
-#define SCREEN_WIDTH 512
+#define SCREEN_WIDTH 256
 
 #define SAFE_DELETE(p)       if(p) { delete (p);     (p)=0; }
 

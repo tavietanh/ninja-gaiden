@@ -5,8 +5,10 @@ Tile::Tile(void)
 {
 }
 
-Tile::Tile(D3DXVECTOR3 _position, int ID, eSpriteID tileMapID)
+Tile::Tile(D3DXVECTOR3 _position, int ID, eSpriteID tileMapID) : CObjectDx9(_position, eDirection::NONE, eObjectID::TILE_BACKGROUND)
 {
+	m_TypeObject = ETypeObject::TILE_MAP;
+	//m_Position = _position;
 	m_Sprite = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(tileMapID));
 	m_Sprite->getAnimation()->setSourceRectAtIndex(ID);
 	m_ID = ID;
@@ -22,6 +24,10 @@ void Tile::Initialize()
 void Tile::UpdateAnimation()
 {
 
+}
+void Tile::UpdateCollision(CObjectDx9* checkingObject)
+{
+	// NOTE: No code
 }
 
 void Tile::Update()

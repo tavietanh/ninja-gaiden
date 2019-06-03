@@ -37,8 +37,19 @@ CSpriteDx9* SpriteManager::getSprite(eSpriteID eID)
 
 void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 {
-	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\1.png", eSpriteID::SPRITE_MAP_1, 79, 1, 79);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\1\\1.png", eSpriteID::SPRITE_MAP_1, 79, 1, 79);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_run.png", eSpriteID::SPRITE_NINJA_RUN, 3, 1, 3);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_hit.png", eSpriteID::SPRITE_NINJA_HIT, 3, 1, 3);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_jump.png", eSpriteID::SPRITE_NINJA_JUMP, 4, 1, 4);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_idle.png", eSpriteID::SPRITE_NINJA_IDLE, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_sit.png", eSpriteID::SPRITE_NINJA_SIT, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_jump_hit.png", eSpriteID::SPRITE_NINJA_JUMP_HIT, 4, 1, 4);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_sit_hit.png", eSpriteID::SPRITE_NINJA_SIT_HIT, 3, 1, 3);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_skill.png", eSpriteID::SPRITE_NINJA_SKILL, 3, 1, 3);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_climb.png", eSpriteID::SPRITE_NINJA_CLIMB, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRun\\enemy_run.png", eSpriteID::SPRITE_ENEMY_RUN, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemySword\\enemy_sword.png", eSpriteID::SPRITE_ENEMY_SWORD, 3, 1, 3);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\explosion.png", eSpriteID::SPRITE_EXPLOSION, 1, 1, 1);
 }
 
 void SpriteManager::Release()

@@ -9,13 +9,10 @@ Camera::Camera()
 	m_matrixTranslate._42 = SCREEN_HEIGHT;
 	m_matrixTranslate._22 = -1.0f;
 	m_isLockWidth = false;
-	m_isLockHeight = false;
 	m_isCheckFlagX = false;
-	m_isCheckFlagY = false;
 	m_flagStartAutoRun = D3DXVECTOR2(0, 0);
 	m_flagStopAutoRun = D3DXVECTOR2(0, 0);
 	m_isPause = false;
-	m_tempLockHeight = false;
 }
 
 
@@ -27,13 +24,11 @@ void Camera::Reset()
 	m_matrixTranslate._42 = SCREEN_HEIGHT;
 	m_matrixTranslate._22 = -1.0f;
 	m_isLockWidth = false;
-	m_isLockHeight = false;
 	m_isCheckFlagX = false;
 	m_isCheckFlagY = false;
 	m_flagStartAutoRun = D3DXVECTOR2(0, 0);
 	m_flagStopAutoRun = D3DXVECTOR2(0, 0);
 	m_isPause = false;
-	m_tempLockHeight = false;
 }
 
 Camera* Camera::getInstance()
@@ -59,23 +54,31 @@ RECT Camera::getBound()
 
 void Camera::UpdateCamera(D3DXVECTOR3* cameramanLocation)
 {
-	if (cameramanLocation->x > SCREEN_WIDTH )
+	if (cameramanLocation->x < SCREEN_WIDTH/2 )
 	{
-		if (m_previousPosition.x > (float)((int)(-(cameramanLocation->x - SCREEN_WIDTH / 2))))
-		{
-			m_matrixTranslate._41 = (float)((int)(-(cameramanLocation->x - SCREEN_WIDTH / 2)));
-		}
+		m_isLockWidth = true;
 	}
-	if (cameramanLocation->y > SCREEN_HEIGHT)
+	else
 	{
-		if (m_previousPosition.y < (float)(SCREEN_HEIGHT + (int)((cameramanLocation->y - SCREEN_HEIGHT / 2))))
-		{
-			m_matrixTranslate._42 = (float)(SCREEN_HEIGHT + (int)((cameramanLocation->y - SCREEN_HEIGHT / 2)));
-		}
+		m_matrixTranslate._41 = (float)((int)(-(cameramanLocation->x - SCREEN_WIDTH / 2)));
+		m_isLockWidth = false;
 	}
 	this->m_previousPosition.x = m_matrixTranslate._41;
-	this->m_previousPosition.y = m_matrixTranslate._42;
-	
+	if (m_isCheckFlagX)
+	{
+		if ((getBound().right - SCREEN_WIDTH / 2) > m_flagStartAutoRun.x)
+		{
+			m_matrixTranslate._41 -= 1;
+			m_isPause = true;
+		}
+		if ((getBound().right - SCREEN_WIDTH / 2) >= m_flagStopAutoRun.x)
+		{
+			m_isCheckFlagX = false;
+			m_isLockWidth = true;
+			m_isPause = false;
+		}
+	}
+
 }
 
 D3DXMATRIX Camera::GetMatrixTranslate()

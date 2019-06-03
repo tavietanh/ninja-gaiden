@@ -5,6 +5,7 @@
 #include <dinput.h>
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <stdio.h>
 
 class CInputDx9
 {
@@ -27,7 +28,20 @@ public:
 	bool					IsKeyRelease(int keyCode);
 	bool					IsKeyUp(int keyCode);
 
-	
+	bool					IsKeyLeftDownAndKeyRightDown();
+	bool					IsKeyLeftDownAndKeyRightUp();
+	bool					IsKeyLeftUpAndKeyRightDown();
+	bool					IsKeyLeftUpAndKeyRightUp();
+	bool					IsMouseLeftDown();
+	bool					IsMouseLeftPress();
+	bool					IsMouseRightDown();
+	bool					IsMouseRightPress();
+
+	bool					IsKeyUpUpAndKeyDownUp();
+	bool					IsKeyUpDownAndKeyDownDown();
+	bool					IsKeyUpDownAndKeyDownUp();
+	bool					IsKeyUpUpAndKeyDownDown();
+
 	D3DXVECTOR2				GetCursorLocation();
 	static CInputDx9*		getInstance();
 	void					InitializeInput();

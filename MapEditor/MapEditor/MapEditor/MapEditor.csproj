@@ -117,15 +117,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\universe.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\grid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\test_tile_map.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resource\game\" />
     <Folder Include="Resource\tilemap\" />
   </ItemGroup>

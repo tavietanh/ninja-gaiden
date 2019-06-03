@@ -58,6 +58,96 @@
     <Filter Include="Game Object\Ninja\Sprite">
       <UniqueIdentifier>{40185270-fa26-4e6e-84d6-36179a820417}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\XML Reader">
+      <UniqueIdentifier>{39c769dd-61a4-42c7-85f2-620100931c53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grid">
+      <UniqueIdentifier>{70162fc9-3372-4ad9-9040-2ac215c080d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy">
+      <UniqueIdentifier>{8c1bc0c2-1ba3-44ad-8766-69616562f761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item">
+      <UniqueIdentifier>{a64e6875-6c31-46c9-b9d1-b0dfdccf33cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Soldier">
+      <UniqueIdentifier>{ca1f1f68-c86e-41b6-8638-44b2f08082da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Shinobi">
+      <UniqueIdentifier>{e4bf1671-f873-4ccf-942b-6c26eb4e65dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Animal">
+      <UniqueIdentifier>{23ec48f4-2564-424d-be02-5db69220ac41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Soldier\Run">
+      <UniqueIdentifier>{c8168a43-55ab-4e16-97d5-1809666d72dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Soldier\Rocket">
+      <UniqueIdentifier>{3dae3af0-e253-4b7f-a245-21a1bb2b1ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Soldier\Machine Gun">
+      <UniqueIdentifier>{c35aef9d-37c3-460a-bd37-fd20748d65d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Shinobi\Throw Sword">
+      <UniqueIdentifier>{412fcad3-aa57-4a84-8800-76f9ebb37394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Shinobi\Run Sword">
+      <UniqueIdentifier>{2dea35c9-1b63-4ea0-ae84-eb83e5a31c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Animal\Bat">
+      <UniqueIdentifier>{f25d8d04-349c-4c2a-bec6-07e34bba3aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Animal\Eagle">
+      <UniqueIdentifier>{7bf4a467-5c9d-461a-a13f-3d07e698bb81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Animal\Panther">
+      <UniqueIdentifier>{69b263aa-c099-4b3d-9763-bbb43564f4ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Gift">
+      <UniqueIdentifier>{c5dcae57-f066-421b-ad9b-bf4538219c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Weaponry">
+      <UniqueIdentifier>{e182d43f-8631-4308-8333-8409c43aa5d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Point">
+      <UniqueIdentifier>{bcf21f87-3c59-4ea2-a3f3-a57ba2070f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Point\500">
+      <UniqueIdentifier>{b0302965-f9ca-40b6-9d60-78497199d147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Point\1000">
+      <UniqueIdentifier>{8654572b-b973-412d-8766-b6edc42a6d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Power">
+      <UniqueIdentifier>{6e2aa330-3d23-4deb-bf46-585b214f9a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Power\5">
+      <UniqueIdentifier>{d7747326-dec1-43aa-b96f-c1ae490100b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Power\10">
+      <UniqueIdentifier>{7ed3add5-9064-45de-a044-0831c3d0d029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Magic">
+      <UniqueIdentifier>{46a6d63e-ab81-4b48-aea5-cf2e268a8613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Magic\Health">
+      <UniqueIdentifier>{7b849c23-4624-4cfc-961d-c662835f23ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Magic\Freeze">
+      <UniqueIdentifier>{370687dd-9e9d-40f0-a602-9db509806508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Weaponry\Flames">
+      <UniqueIdentifier>{d303cea2-61ba-41f1-a89c-a5eb48b37a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Weaponry\Throw Star">
+      <UniqueIdentifier>{aff4d242-83ee-4a92-bf79-195a1ccf8082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item\Weaponry\Windmil Star">
+      <UniqueIdentifier>{e31e056e-63cd-4b81-afce-0d23d3cccf9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Enemy\Boss">
+      <UniqueIdentifier>{1bd68a1b-1306-44ee-8f63-6148ff62a875}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCamera.h">
@@ -138,6 +228,96 @@
     <ClInclude Include="EDirection.h">
       <Filter>Framework\Global</Filter>
     </ClInclude>
+    <ClInclude Include="ETypeObject.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EObjectID.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EObjectState.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="IDDirection.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="CPhysicDx9.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Markup.h">
+      <Filter>Framework\XML Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualObject.h">
+      <Filter>Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyRocket.h">
+      <Filter>Game Object\Enemy\Soldier\Rocket</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyRun.h">
+      <Filter>Game Object\Enemy\Soldier\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMachineGun.h">
+      <Filter>Game Object\Enemy\Soldier\Machine Gun</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySword.h">
+      <Filter>Game Object\Enemy\Shinobi\Run Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyThrowSword.h">
+      <Filter>Game Object\Enemy\Shinobi\Throw Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBrownBat.h">
+      <Filter>Game Object\Enemy\Animal\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyEagle.h">
+      <Filter>Game Object\Enemy\Animal\Eagle</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPanther.h">
+      <Filter>Game Object\Enemy\Animal\Panther</Filter>
+    </ClInclude>
+    <ClInclude Include="GifButerfly.h">
+      <Filter>Game Object\Item\Gift</Filter>
+    </ClInclude>
+    <ClInclude Include="GifBird.h">
+      <Filter>Game Object\Item\Gift</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Game Object\Item\Magic\Health</Filter>
+    </ClInclude>
+    <ClInclude Include="Freeze.h">
+      <Filter>Game Object\Item\Magic\Freeze</Filter>
+    </ClInclude>
+    <ClInclude Include="FivePower.h">
+      <Filter>Game Object\Item\Power\5</Filter>
+    </ClInclude>
+    <ClInclude Include="TenPower.h">
+      <Filter>Game Object\Item\Power\10</Filter>
+    </ClInclude>
+    <ClInclude Include="Point500.h">
+      <Filter>Game Object\Item\Point\500</Filter>
+    </ClInclude>
+    <ClInclude Include="Point1000.h">
+      <Filter>Game Object\Item\Point\1000</Filter>
+    </ClInclude>
+    <ClInclude Include="Flames.h">
+      <Filter>Game Object\Item\Weaponry\Flames</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowStar.h">
+      <Filter>Game Object\Item\Weaponry\Throw Star</Filter>
+    </ClInclude>
+    <ClInclude Include="WindmilStar.h">
+      <Filter>Game Object\Item\Weaponry\Windmil Star</Filter>
+    </ClInclude>
+    <ClInclude Include="EDirectAttack.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3.h">
+      <Filter>Game Object\Enemy\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -196,6 +376,84 @@
     </ClCompile>
     <ClCompile Include="NinjaSpirte.cpp">
       <Filter>Game Object\Ninja\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CPhysicDx9.cpp">
+      <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Markup.cpp">
+      <Filter>Framework\XML Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualObject.cpp">
+      <Filter>Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyRocket.cpp">
+      <Filter>Game Object\Enemy\Soldier\Rocket</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyRun.cpp">
+      <Filter>Game Object\Enemy\Soldier\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMachineGun.cpp">
+      <Filter>Game Object\Enemy\Soldier\Machine Gun</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySword.cpp">
+      <Filter>Game Object\Enemy\Shinobi\Run Sword</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyThrowSword.cpp">
+      <Filter>Game Object\Enemy\Shinobi\Throw Sword</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBrownBat.cpp">
+      <Filter>Game Object\Enemy\Animal\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyEagle.cpp">
+      <Filter>Game Object\Enemy\Animal\Eagle</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyPanther.cpp">
+      <Filter>Game Object\Enemy\Animal\Panther</Filter>
+    </ClCompile>
+    <ClCompile Include="GifButerfly.cpp">
+      <Filter>Game Object\Item\Gift</Filter>
+    </ClCompile>
+    <ClCompile Include="GifBird.cpp">
+      <Filter>Game Object\Item\Gift</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Game Object\Item\Magic\Health</Filter>
+    </ClCompile>
+    <ClCompile Include="Freeze.cpp">
+      <Filter>Game Object\Item\Magic\Freeze</Filter>
+    </ClCompile>
+    <ClCompile Include="FivePower.cpp">
+      <Filter>Game Object\Item\Power\5</Filter>
+    </ClCompile>
+    <ClCompile Include="TenPower.cpp">
+      <Filter>Game Object\Item\Power\10</Filter>
+    </ClCompile>
+    <ClCompile Include="Point500.cpp">
+      <Filter>Game Object\Item\Point\500</Filter>
+    </ClCompile>
+    <ClCompile Include="Point1000.cpp">
+      <Filter>Game Object\Item\Point\1000</Filter>
+    </ClCompile>
+    <ClCompile Include="Flames.cpp">
+      <Filter>Game Object\Item\Weaponry\Flames</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowStar.cpp">
+      <Filter>Game Object\Item\Weaponry\Throw Star</Filter>
+    </ClCompile>
+    <ClCompile Include="WindmilStar.cpp">
+      <Filter>Game Object\Item\Weaponry\Windmil Star</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3.cpp">
+      <Filter>Game Object\Enemy\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

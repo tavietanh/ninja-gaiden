@@ -105,7 +105,7 @@ namespace MapEditor.Framwork
 
             if (Support.IsDynamic((ObjectID)this.mID) && (ObjectType)(this.mType) == (ObjectType.NORMAL_OBJECT))
             {
-                this.mRangeOfMovement = new RECTANGLE(this.mBound.cX, this.mBound.cY, this.mBound.width + 224, this.mBound.height + 224);
+                this.mRangeOfMovement = new RECTANGLE(this.mBound.cX, this.mBound.cY, this.mBound.width, this.mBound.height);
             }
             else
             {

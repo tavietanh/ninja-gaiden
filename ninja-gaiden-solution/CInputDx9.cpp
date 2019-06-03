@@ -31,12 +31,19 @@ void CInputDx9::InitializeInput()
 		(void**)&m_lpDirectInput,
 		0);
 
-
+	if (result != D3D_OK)
+	{
+		//(Logger::GetLogger("DXGame::Init_Input()").Error("Can't Init DirectX Input"));
+		
+	}
 
 
 	result = m_lpDirectInput->CreateDevice(GUID_SysKeyboard, &m_lpKeyBoardDevice, 0);
 
-
+	if (result != D3D_OK)
+	{
+		
+	}
 
 	DIPROPDWORD dipdw;
 
@@ -52,7 +59,10 @@ void CInputDx9::InitializeInput()
 
 	result = m_lpDirectInput->CreateDevice(GUID_SysMouse, &m_lpMouseDevice, 0);
 
-
+	if (result != D3D_OK)
+	{
+		
+	}
 	for (int i = 0; i < 256; i++)
 	{
 		m_PressKey[i] = false;
@@ -65,13 +75,22 @@ void CInputDx9::InitializeKeyBoardDevice(HWND handleWindow)
 {
 	HRESULT result;
 	result = m_lpKeyBoardDevice->SetDataFormat(&c_dfDIKeyboard);
-
+	if (result != D3D_OK)
+	{
+		
+	}
 
 	result = m_lpKeyBoardDevice->SetCooperativeLevel(handleWindow, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND);
-
+	if (result != D3D_OK)
+	{
+		
+	}
 
 	result = m_lpKeyBoardDevice->Acquire();
-
+	if (result != D3D_OK)
+	{
+		
+	}
 }
 
 void CInputDx9::InitializeMouseDevice(HWND handleWindow)
@@ -82,15 +101,44 @@ void CInputDx9::InitializeMouseDevice(HWND handleWindow)
 
 	result = m_lpMouseDevice->SetDataFormat(&c_dfDIMouse2);
 
-	
+	if (result != DI_OK)
+	{
+		
+	}
 
 	result = m_lpMouseDevice->SetCooperativeLevel(handleWindow, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND);
 
-	
+	if (result != DI_OK)
+	{
+		
+	}
+
 	result = m_lpMouseDevice->Acquire();
-	
+	if (result != D3D_OK)
+	{
+		
+	}
 }
 
+bool CInputDx9::IsMouseRightDown()
+{
+	return ((m_mouseState.rgbButtons[1] & 0x80) != 0);
+}
+
+bool CInputDx9::IsMouseLeftDown()
+{
+	return ((m_mouseState.rgbButtons[0] & 0x80) != 0);
+}
+
+bool CInputDx9::IsMouseRightPress()
+{
+	return (((m_previousMouseState.rgbButtons[1] & 0x80) == 0) && ((m_mouseState.rgbButtons[1] & 0x80) != 0));
+}
+
+bool CInputDx9::IsMouseLeftPress()
+{
+	return (((m_previousMouseState.rgbButtons[0] & 0x80) == 0) && ((m_mouseState.rgbButtons[0] & 0x80) != 0));
+}
 
 void CInputDx9::UpdateKeyBoard()
 {
@@ -148,6 +196,46 @@ void CInputDx9::SetKeyDown(int keyCode)
 void CInputDx9::SetKeyUp(int keyCode)
 {
 	m_currentBuffer[keyCode] &= 0x00000000;
+}
+
+bool CInputDx9::IsKeyLeftUpAndKeyRightDown()
+{
+	return IsKeyUp(DIK_LEFT) && IsKeyDown(DIK_RIGHT);
+}
+
+bool CInputDx9::IsKeyLeftDownAndKeyRightUp()
+{
+	return IsKeyDown(DIK_LEFT) && IsKeyUp(DIK_RIGHT);
+}
+
+bool CInputDx9::IsKeyLeftDownAndKeyRightDown()
+{
+	return IsKeyDown(DIK_LEFT) && IsKeyDown(DIK_RIGHT);
+}
+
+bool CInputDx9::IsKeyLeftUpAndKeyRightUp()
+{
+	return IsKeyUp(DIK_LEFT) && IsKeyUp(DIK_RIGHT);
+}
+
+bool CInputDx9::IsKeyUpUpAndKeyDownUp()
+{
+	return IsKeyUp(DIK_UP) && IsKeyUp(DIK_DOWN);
+}
+
+bool CInputDx9::IsKeyUpDownAndKeyDownDown()
+{
+	return IsKeyDown(DIK_UP) && IsKeyDown(DIK_DOWN);
+}
+
+bool CInputDx9::IsKeyUpDownAndKeyDownUp()
+{
+	return IsKeyDown(DIK_UP) && IsKeyUp(DIK_DOWN);
+}
+
+bool CInputDx9::IsKeyUpUpAndKeyDownDown()
+{
+	return IsKeyUp(DIK_UP) && IsKeyDown(DIK_DOWN);
 }
 
 

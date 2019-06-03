@@ -2,9 +2,6 @@
 using MapEditor.Framwork;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -262,7 +259,7 @@ namespace MapEditor
         public static int WIDTH_OF_TILE = 16;
         public static int HEIGHT_OF_TILE = 16;
         public static bool GRIDLINE = false;
-        public static int WIDHT_MAP =  2048;
+        public static int WIDTH_MAP =  2048;
         public static int HEIGHT_MAP = 224;
         public static int WIDTH_SCREEN = 256;
         public static int HEIGHT_SCREEN = 224;
@@ -273,9 +270,10 @@ namespace MapEditor
         public static int WIDHT_OF_VIRTUALOBJECT = 8;
         public static int HEIGHT_OF_VIRTUALOBJECT = 8;
         public static CNode Grid = null;
-        public static int SIZE_CELLS = 256;
-        public static int COL = WIDHT_MAP / SIZE_CELLS;
-        public static int ROW = HEIGHT_MAP / SIZE_CELLS;
+        public static int SIZE_CELLS_WIDTH = 128;
+        public static int SIZE_CELLS_HEIGHT = 88;
+        public static int COL = Convert.ToInt32(Math.Ceiling((float)WIDTH_MAP / SIZE_CELLS_WIDTH));
+        public static int ROW = Convert.ToInt32(Math.Ceiling((float)HEIGHT_MAP / SIZE_CELLS_HEIGHT));
         public static int Count = -1;
         public static Rectangle gridLine = new Rectangle();
         public static Rectangle virtualObject = new Rectangle();

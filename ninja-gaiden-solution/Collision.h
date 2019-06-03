@@ -1,9 +1,9 @@
 ﻿#ifndef COLLISION_H
 #define COLLISION_H
 
+#include "DynamicObject.h"
+#include "CGlobal.h"
 #include "SweptAABB.h"
-
-
 
 static bool Intersect(RECT rect1, RECT rect2)
 {
@@ -38,4 +38,15 @@ static BOX ConvertToBroadPhase(BOX _Box)
 	return GetSweptBroadPhaseBox(_Box);
 }
 
+class DynamicObject;
+class Collision
+{
+public:
+	float m_MoveX, m_MoveY;
+public:
+	Collision();
+	void InitCollision();
+	IDDirection CheckCollision(DynamicObject *, CObjectDx9 *);
+	~Collision();
+};
 #endif
