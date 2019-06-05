@@ -45,6 +45,11 @@ void Skill::Render(SPRITEHANDLE spriteHandle)
 void Skill::Update()
 {
 	m_livingTime += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+	if (this->getTypeSkill() == eIDTypeSkill::NINJA_SWORD && m_livingTime>600)
+	{
+		m_ObjectState = eObjectState::STATE_DEATH;
+		reset();
+	}
 	if (!Intersect(Camera::getInstance()->getBound(), this->getBound()))
 	{
 		m_ObjectState = eObjectState::STATE_DEATH;

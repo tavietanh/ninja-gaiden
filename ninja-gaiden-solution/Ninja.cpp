@@ -264,6 +264,17 @@ int Ninja::HandleInputSitHitState()
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_SIT;
 	}
+	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
+	{
+		if (m_Direction == eDirection::LEFT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+		if (m_Direction == eDirection::RIGHT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+	}
 	return 0;
 }
 int Ninja::HandleInputIdleState()
@@ -364,6 +375,18 @@ int Ninja::HandleInputHitState()
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
 	}
+	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
+	{
+		if (m_Direction == eDirection::LEFT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+		if (m_Direction == eDirection::RIGHT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+	}
+	
 	return 0;
 }
 int Ninja::HandleInputRunState()
@@ -614,9 +637,6 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 				}
 				if (checkingObject->getObjectState() != eObjectState::STATE_BEFORE_DEATH && checkingObject->getObjectState() != eObjectState::STATE_DEATH)
 				{
-					if (m_ObjectState == eObjectState::STATE_NINJA_HIT || m_ObjectState == eObjectState::STATE_NINJA_SIT_HIT)
-						checkingObject->setObjectState(eObjectState::STATE_BEFORE_DEATH);
-					else
 						m_ObjectState = eObjectState::STATE_NINJA_DEAD;
 				}
 				break;

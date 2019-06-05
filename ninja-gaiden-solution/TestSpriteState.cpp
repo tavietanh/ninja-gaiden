@@ -8,6 +8,7 @@ void TestSpriteState::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	string mapPath = "resources\\Map\\" + to_string(map) + "\\" + to_string(map) + ".xml";
 	SkillManager::getInstance()->Initialize();
 	m_Grid->BuildGrid(mapPath.c_str(), (eSpriteID)(map));
+	Camera::getInstance()->setMaxWidth(CGlobal::MapWidth);
 }
 
 float scalexxx = 1.0f;

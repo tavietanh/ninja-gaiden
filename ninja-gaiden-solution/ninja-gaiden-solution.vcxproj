@@ -181,6 +181,7 @@
     <ClInclude Include="SkillWindMilStar.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="SweptAABB.h" />
+    <ClInclude Include="SwordNinja.h" />
     <ClInclude Include="TenPower.h" />
     <ClInclude Include="TestSpriteState.h" />
     <ClInclude Include="ThrowStar.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="SkillThrowStar.cpp" />
     <ClCompile Include="SkillWindMilStar.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="SwordNinja.cpp" />
     <ClCompile Include="TenPower.cpp" />
     <ClCompile Include="TestSpriteState.cpp" />
     <ClCompile Include="ThrowStar.cpp" />

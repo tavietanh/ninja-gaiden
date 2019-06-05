@@ -1,4 +1,4 @@
-#if !defined __CAMERA_H__
+#ifndef __CAMERA_H__
 #define __CAMERA_H__
 
 #include <d3dx9.h>
@@ -16,6 +16,7 @@ class Camera
 	bool m_isLockWidth;
 	bool m_isCheckFlagX;
 	bool m_isCheckFlagY;
+	int m_MaxWidth;
 	D3DXVECTOR2 m_flagStartAutoRun;
 	D3DXVECTOR2 m_flagStopAutoRun;
 	bool m_isPause;
@@ -26,6 +27,7 @@ public:
 	void Reset();
 	bool IsGamePause() { return m_isPause; }
 	void setLockWidth(bool _isLock) { m_isLockWidth = _isLock; }
+	void setMaxWidth(int maxWidth) { m_MaxWidth = maxWidth; }
 	static Camera*		getInstance();
 	void				UpdateCamera(D3DXVECTOR3* cameramanLocation);
 	D3DXMATRIX			GetMatrixTranslate();

@@ -54,7 +54,7 @@ RECT Camera::getBound()
 
 void Camera::UpdateCamera(D3DXVECTOR3* cameramanLocation)
 {
-	if (cameramanLocation->x < SCREEN_WIDTH/2 )
+	if (cameramanLocation->x < SCREEN_WIDTH/2|| (cameramanLocation->x+ SCREEN_WIDTH / 2)>m_MaxWidth)
 	{
 		m_isLockWidth = true;
 	}

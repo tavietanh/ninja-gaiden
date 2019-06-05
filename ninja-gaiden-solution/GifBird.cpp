@@ -48,14 +48,14 @@ void GifBird::UpdateCollision(CObjectDx9* checkingObject)
 {
 	if (!isDead)
 	{
-		if (checkingObject->getID() == eObjectID::NINJA)
+		if (checkingObject->getID() == eObjectID::SKILL_NINJA)
 		{
-			Ninja* temp = (Ninja*)checkingObject;
-			if (temp->getObjectState() == eObjectState::STATE_NINJA_HIT || temp->getObjectState() == eObjectState::STATE_NINJA_SIT_HIT || temp->getObjectState() == eObjectState::STATE_NINJA_JUMP_HIT)
-			{
 				IDDirection collideDirection = this->m_Collision->CheckCollision(this, checkingObject);
 				if (collideDirection != IDDirection::DIR_NONE)
 				{
+					Skill* temp = (Skill*)checkingObject;
+					if (temp->getTypeSkill() != eIDTypeSkill::NINJA_WINDMIL_STAR)
+						temp->setObjectState(eObjectState::STATE_DEATH);
 					m_ObjectState = STATE_BEFORE_DEATH;
 
 					if (m_IDItem == eObjectID::OBJECT_THROW_STAR)
@@ -63,7 +63,6 @@ void GifBird::UpdateCollision(CObjectDx9* checkingObject)
 						ItemManager::getInstance()->AddElement(new ThrowStar(m_Position, eDirection::RIGHT, eObjectID::OBJECT_THROW_STAR));
 					}
 				}
-			}
 		}
 	}
 }

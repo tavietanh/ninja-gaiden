@@ -354,6 +354,9 @@
     <ClInclude Include="SkillWindMilStar.h">
       <Filter>Game Object\Skill</Filter>
     </ClInclude>
+    <ClInclude Include="SwordNinja.h">
+      <Filter>Game Object\Skill</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -510,6 +513,9 @@
       <Filter>Game Object\Skill\Skill Manager</Filter>
     </ClCompile>
     <ClCompile Include="SkillWindMilStar.cpp">
+      <Filter>Game Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordNinja.cpp">
       <Filter>Game Object\Skill</Filter>
     </ClCompile>
   </ItemGroup>
