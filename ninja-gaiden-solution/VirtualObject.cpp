@@ -62,8 +62,7 @@ void VirtualObject::Render(SPRITEHANDLE spriteHandle)
 
 void VirtualObject::Release()
 {
-	m_Width = 0;
-	m_Height = 0;
+
 }
 
 VirtualObject::~VirtualObject()

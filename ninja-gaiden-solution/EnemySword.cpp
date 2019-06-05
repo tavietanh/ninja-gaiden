@@ -15,7 +15,8 @@ EnemySword::EnemySword(D3DXVECTOR3 _position, eDirection _direction, eObjectID _
 
 void EnemySword::Initialize()
 {
-	m_ObjectState = eObjectState::STATE_JUMP;
+	isDead = false;
+	m_ObjectState = eObjectState::STATE_ALIVE_IDLE;
 	sprite_dead = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(eSpriteID::SPRITE_EXPLOSION));
 	sprite_main = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(eSpriteID::SPRITE_ENEMY_SWORD));
 	m_Sprite = sprite_main;
@@ -24,7 +25,9 @@ void EnemySword::Initialize()
 	this->m_Physic->setVelocity(D3DXVECTOR2(0, 0));
 	this->m_Physic->setAccelerate(D3DXVECTOR2(0, -0.01f));
 	m_Position.z = 1.0f;
-	m_Direction = eDirection::LEFT;
+	if(m_Position.x>CGlobal::Ninja_X)
+		m_Direction = eDirection::LEFT;
+	else m_Direction = eDirection::RIGHT;
 }
 
 void EnemySword::UpdateAnimation()
@@ -69,13 +72,17 @@ void EnemySword::UpdateCollision(CObjectDx9* checkingObject)
 		{
 			switch (checkingObject->getID())
 			{
-			case eObjectID::NINJA:
+			case eObjectID::SKILL_NINJA:
+			{
+				Skill* temp = (Skill*)checkingObject;
+				if (temp->getTypeSkill() != eIDTypeSkill::NINJA_WINDMIL_STAR)
+					temp->setObjectState(eObjectState::STATE_DEATH);
 				this->m_ObjectState = eObjectState::STATE_BEFORE_DEATH;
-				this->getPhysic()->setVelocityY(2.0f);
+				this->getPhysic()->setVelocityY(0.0f);
 				this->getPhysic()->setVelocityX(0.0f);
 				this->isDead = true;
 				break;
-
+			}
 			case eObjectID::TILE_BASE:
 				if (m_Position.y > checkingObject->getPositionVec3().y)
 				{
@@ -124,6 +131,7 @@ void EnemySword::UpdateMovement()
 		if (m_Position.x < 0 || m_Position.x > Camera::getInstance()->getBound().right)
 		{
 			m_ObjectState = eObjectState::STATE_DEATH;
+			isDead = true;
 		}
 		break;
 	case STATE_JUMP:
@@ -151,7 +159,6 @@ void EnemySword::UpdateMovement()
 			{
 				m_Physic->setVelocityX(-VELOC_MOVE_RIGHT);
 			}
-			setPositionY(getPositionVec2().y + 2);
 			m_Physic->setVelocityY(VELOC_JUMB);
 			m_Physic->setAccelerate(D3DXVECTOR2(0, 0));
 			isDead = true;
@@ -167,7 +174,7 @@ void EnemySword::UpdateMovement()
 }
 void EnemySword::Update()
 {
-	switch (m_ObjectState)
+	switch (this->m_ObjectState)
 	{
 	case STATE_ALIVE_IDLE:
 		break;
@@ -181,8 +188,8 @@ void EnemySword::Update()
 		}
 		if (m_TimeChangeState > 215)
 		{
-			m_TimeChangeState = 0;
 			m_ObjectState = eObjectState::STATE_DEATH;
+			m_TimeChangeState = 0;
 		}
 		break;
 	case STATE_DEATH:
@@ -211,11 +218,8 @@ void EnemySword::Render(SPRITEHANDLE spriteHandle)
 
 void EnemySword::Release()
 {
-	m_Sprite = 0;
-	sprite_dead->Release();
-	sprite_main->Release();
-	SAFE_DELETE(sprite_dead);
-	SAFE_DELETE(sprite_main);
+	this->m_Position = this->m_SPosition;
+	this->Initialize();
 }
 EnemySword::~EnemySword()
 {

@@ -50,6 +50,14 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRun\\enemy_run.png", eSpriteID::SPRITE_ENEMY_RUN, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemySword\\enemy_sword.png", eSpriteID::SPRITE_ENEMY_SWORD, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\explosion.png", eSpriteID::SPRITE_EXPLOSION, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\GifBird\\GifBird.png", eSpriteID::SPRITE_GIF_BIRD, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\GifButerfly\\GifButerfly.png", eSpriteID::SPRITE_GIF_BUTERFLY, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\ThrowStar.png", eSpriteID::SPRITE_THROW_STAR, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\Skill\\SkillThrowStar.png", eSpriteID::SPRITE_SKILL_THROW_STAR, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\Flames.png", eSpriteID::SPRITE_FLAMES, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\Skill\\SkillFlames.png", eSpriteID::SPRITE_SKILL_FLAMES, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\WindmilStar.png", eSpriteID::SPRITE_WINDMIL_STAR, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\Skill\\SkillWindmilStar.png", eSpriteID::SPRITE_SKILL_WINDMIL_STAR, 2, 1, 2);
 }
 
 void SpriteManager::Release()

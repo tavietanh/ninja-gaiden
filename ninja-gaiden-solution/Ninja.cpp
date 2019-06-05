@@ -1,6 +1,6 @@
 #include "Ninja.h"
 
-#define VELOCITY_Y_JUMP				3.8f
+#define VELOCITY_Y_JUMP				3.3f
 #define VELOCITY_X_MOVE_TO_RIGHT	1.1f
 #define VELOCITY_Y_MOVE_TO_LEFT		-1.1f
 
@@ -40,7 +40,29 @@ Ninja::Ninja(D3DXVECTOR3 _position, eDirection _direction, eObjectID _objectID)
 	isInvulnerable = true;
 	prePosX = 0;
 	finalPosX = 0;
+	setSkillNinja(eIDSkillNinja::SKILL_WINDMIL_STAR);
 }
+
+int Ninja::CheckOutBottomCamera()
+{
+	if (m_Position.y < Camera::getInstance()->getBound().bottom)
+	{
+		if (m_ObjectState != eObjectState::STATE_NINJA_DEAD)
+		{
+			m_ObjectState = eObjectState::STATE_NINJA_DEAD;
+		}
+		isFall = false;
+		m_timeBeforeDeadBottom += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+		if (m_timeBeforeDeadBottom > 3000)
+		{
+			m_timeBeforeDeadBottom = 0;
+			m_ObjectState = eObjectState::STATE_NINJA_DEAD;
+			m_timeDeath = 3000;
+		}
+	}
+	return 0;
+}
+
 void Ninja::UpdateAnimation()
 {
 	m_NinjaSprite->UpdateAnimation(m_ObjectState);
@@ -97,10 +119,11 @@ void Ninja::UpdateMovement()
 		}
 	}
 	CGlobal::Ninja_X = (int)(getPositionVec2().x);
-	CGlobal::Ninja_X = (int)(getPositionVec2().y);
+	CGlobal::Ninja_Y = (int)(getPositionVec2().y);
 }
 void Ninja::HandleInput()
 {
+	CheckOutBottomCamera();
 	switch (m_ObjectState)
 	{
 		case STATE_NINJA_IDLE:
@@ -116,6 +139,11 @@ void Ninja::HandleInput()
 		case STATE_NINJA_HIT:
 		{
 			HandleInputHitState();
+		}
+		break;
+		case STATE_NINJA_SKILL:
+		{
+			HandleInputSkillState();
 		}
 		break;
 		case STATE_NINJA_RUN:
@@ -145,14 +173,15 @@ void Ninja::HandleInput()
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_FALL;
 	}
-	if (m_ObjectState != eObjectState::STATE_NINJA_HIT && m_ObjectState != eObjectState::STATE_NINJA_SIT_HIT)
+	if (m_ObjectState != eObjectState::STATE_NINJA_HIT 
+		&& m_ObjectState != eObjectState::STATE_NINJA_SIT_HIT 
+		&& m_ObjectState != eObjectState::STATE_NINJA_SKILL)
 	{
 		m_timeHit = 0;
 	}
 }
 int Ninja::HandleInputDeadState()
 {
-
 	if (!isSetVelocityDeathState)
 	{
 		m_Physic->setVelocityY(3.5f);
@@ -167,7 +196,44 @@ int Ninja::HandleInputDeadState()
 		isSetVelocityDeathState = true;
 		isInvulnerable = true;
 	}
-
+	m_timeDeath += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+	if (m_timeDeath > 2000)
+	{
+		m_timeDeath = 0;
+		isSetVelocityDeathState = false;
+		m_ObjectState = eObjectState::STATE_NINJA_JUMP;
+		m_Position.x = (float)(Camera::getInstance()->getBound().left + 128);
+		m_Position.y = (float)(Camera::getInstance()->getBound().top - 32);
+		this->m_Physic->setAccelerate(D3DXVECTOR2(0.0f, -0.1f));
+		m_Physic->setVelocityX(0.0f);
+		m_Physic->setVelocityY(0.0f);
+		isInvulnerable = true;
+	}
+	return 0;
+}
+int Ninja::HandleInputSkillState()
+{
+	if (isJump == true)
+	{
+		if (CInputDx9::getInstance()->IsKeyLeftUpAndKeyRightDown())
+		{
+			if (m_Direction == eDirection::LEFT)
+				m_Physic->setVelocityX(VELOCITY_X_MOVE_TO_RIGHT - 0.5f);
+			else m_Physic->setVelocityX(VELOCITY_X_MOVE_TO_RIGHT);
+			m_Physic->setVelocityX(VELOCITY_X_MOVE_TO_RIGHT);
+		}
+		if (CInputDx9::getInstance()->IsKeyLeftDownAndKeyRightUp())
+		{
+			if (m_Direction == eDirection::LEFT)
+				m_Physic->setVelocityX(VELOCITY_Y_MOVE_TO_LEFT);
+			else m_Physic->setVelocityX(VELOCITY_Y_MOVE_TO_LEFT + 0.5f);
+		}
+	}
+	m_timeHit += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+	if (m_timeHit > 600)
+	{
+		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
+	}
 	return 0;
 }
 int Ninja::HandleInputSitState()
@@ -227,9 +293,15 @@ int Ninja::HandleInputIdleState()
 		m_Physic->setVelocityY(VELOCITY_Y_JUMP);
 		return 0;
 	}
-	if (CInputDx9::getInstance()->IsKeyDown(DIK_Z))
+	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
+		return 0;
+	}
+	if (CInputDx9::getInstance()->IsKeyUpDownAndKeyZDown())
+	{
+		UseSkill();
+		m_ObjectState = eObjectState::STATE_NINJA_SKILL;
 	}
 	return 1;
 }
@@ -258,9 +330,14 @@ int Ninja::HandleInputJumpState()
 	{
 		
 	}
-	if (CInputDx9::getInstance()->IsKeyDown(DIK_Z))
+	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
+	}
+	if (CInputDx9::getInstance()->IsKeyUpDownAndKeyZDown())
+	{
+		m_ObjectState = eObjectState::STATE_NINJA_SKILL;
+		UseSkill();
 	}
 	return 0;
 }
@@ -305,7 +382,7 @@ int Ninja::HandleInputRunState()
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
 	}
-	if (CInputDx9::getInstance()->IsKeyDown(DIK_Z))
+	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
 		return 0;
@@ -317,6 +394,86 @@ int Ninja::HandleInputRunState()
 		return 0;
 	}
 	return 0;
+}
+void Ninja::UseSkill()
+{
+	switch (m_SkillNinja)
+	{
+	case SKILL_SWORD:
+		break;
+	case SKILL_FLAMES:
+		for (int i = 0; i < 3; i++)
+		{
+			if (m_Direction == eDirection::LEFT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-10, 0), D3DXVECTOR2(-1.0f, 2.0f*float(10+i*2)/10), 0);
+			}
+			if (m_Direction == eDirection::RIGHT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(10, 0), D3DXVECTOR2(1.0f, 2.0f*float(10 + i*2) / 10), 0);
+			}
+			if (m_Direction == eDirection::LEFT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, -4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+			}
+			if (m_Direction == eDirection::RIGHT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, -4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+			}
+			if (m_Direction == eDirection::LEFT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, 4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+			}
+			if (m_Direction == eDirection::RIGHT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, 4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+			}
+		}
+		break;
+	case SKILL_THROW_STAR:
+		if (m_Direction == eDirection::LEFT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-3.0f, 0.0f), 0);
+		}
+		if (m_Direction == eDirection::RIGHT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(3.0f, 0.0f), 0);
+		}
+		break;
+	case SKILL_JUMP_HIT:
+		break;
+	case SKILL_WINDMIL_STAR:
+		if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_WINDMIL_STAR) < 1)
+		{
+			if (m_Direction == eDirection::LEFT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-2.5f, 0.0f), -0.05f);
+			}
+			if (m_Direction == eDirection::RIGHT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(2.5f, 0.0f), -0.05f);
+			}
+		}
+		break;
+	case ITEM_HEALTH:
+		break;
+	case ITEM_5_POWER:
+		break;
+	case ITEM_10_POWER:
+		break;
+	case ITEM_500_POINT:
+		break;
+	case ITEM_1000_POINT:
+		break;
+	case ITEM_FREEZE:
+		break;
+	default:
+		break;
+	}
+}
+D3DXVECTOR3 Ninja::GetStartPositionOfSkill(float x, float y)
+{
+	return D3DXVECTOR3(m_Position.x + x, m_Position.y + y, 0);
 }
 int Ninja::UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* checkingObject)
 {
@@ -413,26 +570,6 @@ int Ninja::UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* che
 		}
 		return 0;
 	}
-
-	/*else if (collideDirection == IDDirection::DIR_LEFT)
-	{
-
-		if (m_ObjectState == eObjectState::STATE_RAMBO_SWIM)
-		{
-			m_Position.x += 1;
-		}
-		return 0;
-	}
-
-	else if (collideDirection == IDDirection::DIR_RIGHT)
-	{
-
-		if (m_ObjectState == eObjectState::STATE_RAMBO_SWIM)
-		{
-			m_Position.x -= 1;
-		}
-		return 0;
-	}*/
 	return 1;
 }
 
@@ -483,6 +620,18 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 						m_ObjectState = eObjectState::STATE_NINJA_DEAD;
 				}
 				break;
+			case eObjectID::SKILL_NINJA:
+			{
+				Skill* temp = (Skill*)checkingObject;
+				if (temp->getObjectState() != eObjectState::STATE_DEATH)
+				{
+					if (temp->getLivingTime() > 600)
+					{
+						temp->setObjectState(eObjectState::STATE_DEATH);
+						temp->reset();
+					}
+				}
+			}
 			default:
 				break;
 			}
@@ -551,6 +700,7 @@ void Ninja::SetVelocityXZero()
 {
 	switch (m_ObjectState)
 	{
+	case STATE_NINJA_SKILL:
 	case STATE_NINJA_HIT:
 		if(isJump==false) m_Physic->setVelocityX(0.0f);
 	case STATE_NINJA_JUMP:

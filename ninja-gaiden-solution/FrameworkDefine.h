@@ -12,7 +12,9 @@
 #define SAFE_RELEASE(p)      if(p) { (p)->Release(); (p)=0; }
 
 
-
+#define VELOC_ITEM_X		1.0f
+#define VELOC_ITEM_Y		4.0f
+#define ACCEL_ITEM_Y		-0.03f
 
 #define	GAMETITLE	"Ninja Gaiden"
 #define	FRAME_RATE	60

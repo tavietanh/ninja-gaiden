@@ -69,7 +69,7 @@ void NinjaSpirte::UpdateAnimation(eObjectState _objectState)
 		if (m_previousState != _objectState)
 		{
 			m_Position = D3DXVECTOR3(11, 0, 0);
-			m_frameSize = D3DXVECTOR2(40, 31);
+			m_frameSize = D3DXVECTOR2(17, 31);
 			m_Ninja = m_Hit;
 			resetInverseVariable();
 		}
@@ -140,7 +140,7 @@ void NinjaSpirte::UpdateAnimation(eObjectState _objectState)
 	{
 		if (m_previousState != _objectState)
 		{
-			m_Position = D3DXVECTOR3(0, 0, 0);
+			m_Position = D3DXVECTOR3(4, 0, 0);
 			m_frameSize = D3DXVECTOR2(26, 31);
 			m_Ninja = m_Skill;
 			resetInverseVariable();
@@ -148,7 +148,6 @@ void NinjaSpirte::UpdateAnimation(eObjectState _objectState)
 		m_Ninja->UpdateAnimation(200);
 	}
 	break;
-
 	default:
 		break;
 	}

@@ -49,7 +49,7 @@ bool CGame::InitializeHandleWindow(HINSTANCE hInstance)
 	m_handleWindow = CreateWindow(
 		"CGame",
 		GAMETITLE,
-		(WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX),
+		(WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU |WS_THICKFRAME | WS_MINIMIZEBOX| WS_MAXIMIZEBOX),
 		(horizontal - SCREEN_WIDTH) / 2,
 		(vertical - SCREEN_HEIGHT) / 2,
 		SCREEN_WIDTH,
@@ -128,6 +128,7 @@ bool CGame::InitializeDirect3DDevice(bool isWindowed)
 		return false;
 	}
 	return true;
+	
 }
 
 bool CGame::InitializeDirect3DSpriteHandle()
@@ -151,8 +152,6 @@ bool CGame::InitializeDirectSound()
 bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 {
 	SetWindowText(m_handleWindow, "Ninja Gaiden");
-
-
 	this->InitializeHandleWindow(hInstance);
 	this->InitializeDirect3DEnvironment();
 	this->InitializeDirect3DDevice(isWindowed);
@@ -161,12 +160,10 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	CGameTimeDx9::getInstance()->InitGameTime();
 	this->m_fps = 0;
 
-
 	CInputDx9::getInstance()->InitializeInput();
 	CInputDx9::getInstance()->InitializeMouseDevice(m_handleWindow);
 	CInputDx9::getInstance()->InitializeKeyBoardDevice(m_handleWindow);
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
-
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
 	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,1));
 	return true;
@@ -231,6 +228,7 @@ void CGame::Run()
 					m_lpDirect3DDevice->EndScene();
 				}
 				m_lpDirect3DDevice->Present(0, 0, 0, 0);
+				
 				m_fps = 0;
 			}
 		}

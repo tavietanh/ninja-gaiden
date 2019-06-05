@@ -5,15 +5,15 @@
 #include "NinjaSpirte.h"
 #include "EDirection.h"
 #include "CGlobal.h"
+#include "Skill.h"
+#include "SkillPool.h"
+#include "SkillManager.h"
 #include <fstream>
 #include <list>
-
 using namespace std;
 class Ninja : public DynamicObject
 {
 	NinjaSpirte* m_NinjaSprite;
-	bool HandleInputShooting();
-	bool isAddBullet();
 	bool isFall;
 	bool isJump;
 	bool isLieDown;
@@ -22,34 +22,25 @@ class Ninja : public DynamicObject
 	unsigned char m_colorAlpha;
 	int m_inverseColorAlpha;
 	float m_maxPositionY;
-	float m_timeAddBullet;
 	float m_timeHit;
 	float m_timeClimb;
 	float m_timeDeath;
-	float m_timeDelayRunAndShootRun;
-	float m_timeWaterBomb;
 	float m_timeBeforeDeadBottom;
 	int m_timeInvulnerable;
-
+	D3DXVECTOR3 GetStartPositionOfSkill(float x,float y);
+	eIDSkillNinja m_SkillNinja;
 	int UpdateInvulnerableAnimation();
-	int HandleInputAimBottomRightState();
-	int HandleInputAimTopRightState();
-	int HandleInputAimUpState();
+	int HandleInputSkilling();
 	int HandleInputBeforeDieState();
 	int HandleInputClimbState();
 	int HandleInputDeadState();
-	int HandleInputDiveState();
+	int HandleInputSkillState();
 	int HandleInputIdleState();
 	int HandleInputJumpState();
 	int HandleInputSitState();
 	int HandleInputSitHitState();
 	int HandleInputRunState();
 	int HandleInputHitState();
-	int HandleInputSwimShootState();
-	int HandleInputSwimShootTopRightState();
-	int HandleInputSwimShootUpState();
-	int HandleInputSwimState();
-	int HandleInputWaterBombState();
 	int m_life;
 	list<CObjectDx9*> m_objectBelowCurrent;
 	list<CObjectDx9*> m_objectBelowPrevious;
@@ -59,6 +50,7 @@ class Ninja : public DynamicObject
 	float prePosX;
 	float finalPosX;
 
+	int CheckOutBottomCamera();
 	void SetFallFlag();
 	void SetVelocityXZero();
 	void SetVelocityYZero();
@@ -67,10 +59,13 @@ public:
 	Ninja(D3DXVECTOR3 _position, eDirection _direction, eObjectID _objectID);
 	int getNinjaLife() { return m_life; }
 	void setNinjaLife(int _life) { m_life = _life; }
+	void SetInvulnerable(bool para) { this->isInvulnerable = para; };
 	int UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* checkingObject);
 	RECT getBound();
+	void UseSkill();
 	void Initialize();
 	void SetFlag();
+	void setSkillNinja(eIDSkillNinja _skillNinja) { this->m_SkillNinja = _skillNinja; };
 	void setRectangleCheckingObjectBelow();
 	void Release();
 	void Render(SPRITEHANDLE spriteHandle);
@@ -79,8 +74,6 @@ public:
 	void UpdateCollision(CObjectDx9* checkingObject);
 	void UpdateAnimation();
 	void UpdateMovement();
-	void UpdatePreviousIgnoreList();
-	void CleanIgnoreList();
 	virtual ~Ninja();
 };
 #endif

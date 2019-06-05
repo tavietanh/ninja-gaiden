@@ -237,8 +237,14 @@ bool CInputDx9::IsKeyUpUpAndKeyDownDown()
 {
 	return IsKeyUp(DIK_UP) && IsKeyDown(DIK_DOWN);
 }
-
-
+bool CInputDx9::IsKeyUpDownAndKeyZDown()
+{
+	return IsKeyDown(DIK_UP) && IsKeyDown(DIK_Z);
+}
+bool CInputDx9::IsKeyUpUpAndKeyZDown()
+{
+	return IsKeyUp(DIK_UP) && IsKeyDown(DIK_Z);
+}
 bool CInputDx9::IsKeyPress(int keyCode)
 {
 	if (

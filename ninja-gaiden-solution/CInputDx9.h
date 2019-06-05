@@ -41,6 +41,8 @@ public:
 	bool					IsKeyUpDownAndKeyDownDown();
 	bool					IsKeyUpDownAndKeyDownUp();
 	bool					IsKeyUpUpAndKeyDownDown();
+	bool					IsKeyUpDownAndKeyZDown();
+	bool					IsKeyUpUpAndKeyZDown();
 
 	D3DXVECTOR2				GetCursorLocation();
 	static CInputDx9*		getInstance();

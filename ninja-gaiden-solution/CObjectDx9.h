@@ -37,7 +37,7 @@ public:
 	void			setPositionX(float _X) { m_Position.x = _X; }
 	void			setPositionY(float _Y) { m_Position.y = _Y; }
 	void			setPositionZ(float _Z) { m_Position.z = _Z; }
-	void			reset();
+	
 	D3DXVECTOR3		getPositionVec3() { return m_Position; }
 	D3DXVECTOR2		getPositionVec2() { return D3DXVECTOR2(m_Position.x, m_Position.y); }
 
@@ -50,6 +50,7 @@ public:
 
 	eDirection		getDirection() const { return this->m_Direction; };
 	virtual RECT getBound();
+	void reset();
 	virtual void Initialize() = 0;
 	virtual void UpdateAnimation() = 0;
 

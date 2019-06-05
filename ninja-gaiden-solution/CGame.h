@@ -11,6 +11,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <dsound.h>
+#include <DXGI.h>
 #include "TestSpriteState.h"
 // Factory designPattern
 

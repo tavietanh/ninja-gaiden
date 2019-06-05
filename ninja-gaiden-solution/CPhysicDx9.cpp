@@ -45,7 +45,6 @@ void CPhysicDx9::UpdateMovement(D3DXVECTOR3* _position)
 	float deltaTime = (float)CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds() / 1000;
 
 	deltaTime = deltaTime / ((float)1 / FRAME_RATE);
-
 	_position->x += m_Velocity.x * deltaTime;
 	_position->y += m_Velocity.y * deltaTime;
 	m_Velocity.x += m_Accelerate.x * deltaTime;

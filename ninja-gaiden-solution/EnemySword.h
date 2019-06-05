@@ -4,12 +4,12 @@
 #include "DynamicObject.h"
 #include "VirtualObject.h"
 #include "CCamera.h"
+#include "Skill.h"
 class EnemySword : public DynamicObject
 {
 private:
 	CSpriteDx9* sprite_main;
 	CSpriteDx9* sprite_dead;
-	D3DXVECTOR3 mPosition;
 	bool isJumb;
 public:
 	EnemySword();

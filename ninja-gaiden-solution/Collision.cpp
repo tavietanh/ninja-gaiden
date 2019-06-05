@@ -146,12 +146,12 @@ IDDirection Collision::CheckCollision(DynamicObject *_DynamicObject, CObjectDx9 
 			}
 			else if (_DynamicObject->getBound().right == _Object->getBound().left)
 			{
-				_DynamicObject->setPositionX(_DynamicObject->getPositionVec2().x - 1);
+				/*_DynamicObject->setPositionX(_DynamicObject->getPositionVec2().x - 1);*/
 				return IDDirection::DIR_LEFT;
 			}
 			else if (_DynamicObject->getBound().left == _Object->getBound().left)
 			{
-				_DynamicObject->setPositionX(_DynamicObject->getPositionVec2().x + 1);
+				/*_DynamicObject->setPositionX(_DynamicObject->getPositionVec2().x + 1);*/
 				return IDDirection::DIR_RIGHT;
 			}
 		}

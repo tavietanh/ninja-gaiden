@@ -148,6 +148,15 @@
     <Filter Include="Game Object\Enemy\Boss">
       <UniqueIdentifier>{1bd68a1b-1306-44ee-8f63-6148ff62a875}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Object\Item\ItemManager">
+      <UniqueIdentifier>{02bc40d5-b5f7-4e88-82ea-89f29dedbb52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Skill">
+      <UniqueIdentifier>{df599340-1f68-44e3-9afa-801c8d6ff55b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Skill\Skill Manager">
+      <UniqueIdentifier>{ea5613b0-fcc1-4d22-b8c4-d18477ad4208}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCamera.h">
@@ -318,6 +327,33 @@
     <ClInclude Include="Boss3.h">
       <Filter>Game Object\Enemy\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>Game Object\Item\ItemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EIDItem.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EIDTypeSkill.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillThrowStar.h">
+      <Filter>Game Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillFlames.h">
+      <Filter>Game Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillManager.h">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillPool.h">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillWindMilStar.h">
+      <Filter>Game Object\Skill</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -454,6 +490,27 @@
     </ClCompile>
     <ClCompile Include="Boss3.cpp">
       <Filter>Game Object\Enemy\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>Game Object\Item\ItemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillThrowStar.cpp">
+      <Filter>Game Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillFlames.cpp">
+      <Filter>Game Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillManager.cpp">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillPool.cpp">
+      <Filter>Game Object\Skill\Skill Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillWindMilStar.cpp">
+      <Filter>Game Object\Skill</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ class Cell
 private:
 	int mID;
 	RECT mBound;
+	bool inView;
 public:
 	std::vector<int> mListObject;
 	std::vector<int> mListObjectCollision;
@@ -21,8 +22,7 @@ public:
 	RECT getBound() const { return this->mBound; };
 	std::vector<int> getListObject() const { return this->mListObject; };
 	std::vector<int> getListObjectCollision() const { return this->mListObjectCollision; };
-
-
+	bool isInView = false;
 	Cell();
 	Cell(int, RECT);
 	~Cell();

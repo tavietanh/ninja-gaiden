@@ -22,11 +22,11 @@ void Grid::InsertObjectIntoView(RECT viewPort, std::vector<Cell*> cells)
 
 		if (CheckAABB(ConvertToBox(viewPort), ConvertToBox(cells[a]->getBound())))
 		{
+			cells[a]->isInView = true;
 			for (int i = 0; i < (int)cells[a]->mListObject.size(); ++i)
 			{
-				mListObjectInView.push_back(cells[a]->mListObject[i]);
+					mListObjectInView.push_back(cells[a]->mListObject[i]);
 			}
-
 			for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
 			{
 				if (mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getObjectState() != eObjectState::STATE_DEATH && mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getObjectState() != eObjectState::STATE_BOSS_DEATH)
@@ -40,18 +40,24 @@ void Grid::InsertObjectIntoView(RECT viewPort, std::vector<Cell*> cells)
 
 					if (j == mListObjectCollisionInView.size())
 					{
-
-						mListObjectCollisionInView.push_back(cells[a]->mListObjectCollision[i]);
+						if (CheckAABB(ConvertToBox(viewPort), ConvertToBox(mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getBound())))
+							mListObjectCollisionInView.push_back(cells[a]->mListObjectCollision[i]);
+						/*else
+							mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();*/
 					}
 				}
 				else
 				{
-					cells[a]->mListObjectCollision.erase(cells[a]->mListObjectCollision.begin() + i);
+					/*cells[a]->mListObjectCollision.erase(cells[a]->mListObjectCollision.begin() + i);*/
 				}
-				//if (!CheckAABB(ConvertToBox(viewPort), ConvertToBox(mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getBound())))
-				//{
-				//	mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->reset();
-				//}
+			}
+		}
+		else
+		{
+			cells[a]->isInView = false;
+			for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
+			{
+				mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();
 			}
 		}
 	}
