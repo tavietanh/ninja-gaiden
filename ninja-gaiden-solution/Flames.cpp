@@ -33,10 +33,14 @@ void Flames::UpdateCollision(CObjectDx9* checkingObject)
 			{
 			case eObjectID::NINJA:
 			{
-				isDead = true;
 				Ninja* temp = (Ninja*)checkingObject;
-				temp->SetInvulnerable(true);
-				this->m_ObjectState = STATE_DEATH;
+				if (temp->getObjectState() == eObjectState::STATE_NINJA_IDLE || temp->getObjectState() == STATE_NINJA_RUN)
+				{
+					isDead = true;
+					temp->SetInvulnerable(true);
+					temp->setSkillNinja(eIDSkillNinja::SKILL_FLAMES);
+					this->m_ObjectState = STATE_DEATH;
+				}
 			}
 			break;
 			case eObjectID::TILE_BASE:

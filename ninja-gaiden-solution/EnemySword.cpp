@@ -53,15 +53,6 @@ void EnemySword::UpdateAnimation()
 	}
 }
 
-bool EnemySword::CanCollisionWithVirtualObject(VirtualObject* virtualObject)
-{
-	if ((this->m_Position.y - virtualObject->getPositionVec3().y > this->getSprite()->getAnimation()->getFrameSize().y))
-	{
-		return true;
-	}
-	return false;
-}
-
 void EnemySword::UpdateCollision(CObjectDx9* checkingObject)
 {
 	if (isDead != true)
@@ -128,7 +119,7 @@ void EnemySword::UpdateMovement()
 		{
 			m_Physic->setVelocityX(VELOC_MOVE_RIGHT);
 		}
-		if (m_Position.x < 0 || m_Position.x > Camera::getInstance()->getBound().right)
+		if (m_Position.x < 0 /*|| m_Position.x > Camera::getInstance()->getBound().right*/)
 		{
 			m_ObjectState = eObjectState::STATE_DEATH;
 			isDead = true;

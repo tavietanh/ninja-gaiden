@@ -157,6 +157,12 @@
     <Filter Include="Game Object\Skill\Skill Manager">
       <UniqueIdentifier>{ea5613b0-fcc1-4d22-b8c4-d18477ad4208}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Object\Skill\Skill Ninja">
+      <UniqueIdentifier>{fc26bf77-8c6f-4f98-8db7-5cf54f99ef4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Skill\Skill Enemy">
+      <UniqueIdentifier>{ea0b9061-c5d9-431e-8d61-cc0d64f4fed2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCamera.h">
@@ -336,12 +342,6 @@
     <ClInclude Include="EIDTypeSkill.h">
       <Filter>Framework\Global</Filter>
     </ClInclude>
-    <ClInclude Include="SkillThrowStar.h">
-      <Filter>Game Object\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillFlames.h">
-      <Filter>Game Object\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>Game Object\Skill\Skill Manager</Filter>
     </ClInclude>
@@ -351,11 +351,20 @@
     <ClInclude Include="SkillPool.h">
       <Filter>Game Object\Skill\Skill Manager</Filter>
     </ClInclude>
+    <ClInclude Include="SkillFlames.h">
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillThrowStar.h">
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClInclude>
     <ClInclude Include="SkillWindMilStar.h">
-      <Filter>Game Object\Skill</Filter>
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
     </ClInclude>
     <ClInclude Include="SwordNinja.h">
-      <Filter>Game Object\Skill</Filter>
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordEnemyThrow.h">
+      <Filter>Game Object\Skill\Skill Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -497,12 +506,6 @@
     <ClCompile Include="ItemManager.cpp">
       <Filter>Game Object\Item\ItemManager</Filter>
     </ClCompile>
-    <ClCompile Include="SkillThrowStar.cpp">
-      <Filter>Game Object\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillFlames.cpp">
-      <Filter>Game Object\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>Game Object\Skill\Skill Manager</Filter>
     </ClCompile>
@@ -512,11 +515,20 @@
     <ClCompile Include="SkillPool.cpp">
       <Filter>Game Object\Skill\Skill Manager</Filter>
     </ClCompile>
+    <ClCompile Include="SkillFlames.cpp">
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillThrowStar.cpp">
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClCompile>
     <ClCompile Include="SkillWindMilStar.cpp">
-      <Filter>Game Object\Skill</Filter>
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
     </ClCompile>
     <ClCompile Include="SwordNinja.cpp">
-      <Filter>Game Object\Skill</Filter>
+      <Filter>Game Object\Skill\Skill Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordEnemyThrow.cpp">
+      <Filter>Game Object\Skill\Skill Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

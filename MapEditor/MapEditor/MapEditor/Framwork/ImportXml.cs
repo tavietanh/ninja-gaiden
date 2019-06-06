@@ -101,6 +101,21 @@ namespace MapEditor.Framwork
                             workSpace.Children.Add(shape);
                             this.mReadList.Add(Convert.ToInt32(item.Attributes["Index"].Value));
                         }
+                        else if (Convert.ToInt32(item.Attributes["Id"].Value) == (int)ObjectID.VIRTUAL_OBJECT_CLIMB)
+                        {
+                            Rectangle shape = new Rectangle();
+                            shape.Tag = (int)ObjectID.VIRTUAL_OBJECT_CLIMB;
+                            shape.Width = width;
+                            shape.Height = height;
+                            shape.Stroke = new SolidColorBrush(Colors.Green);
+                            shape.StrokeThickness = 3;
+
+                            Canvas.SetLeft(shape, tempPosition.cX);
+                            Canvas.SetTop(shape, tempPosition.cY);
+                            Canvas.SetZIndex(shape, 2);
+                            workSpace.Children.Add(shape);
+                            this.mReadList.Add(Convert.ToInt32(item.Attributes["Index"].Value));
+                        }
                     }
                     else if (Convert.ToInt32(item.Attributes["Id"].Value) == (int)ObjectID.NINJA
                         && Convert.ToInt32(item.Attributes["Type"].Value) == (int)ObjectType.NORMAL_OBJECT)

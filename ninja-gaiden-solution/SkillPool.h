@@ -6,6 +6,7 @@
 #include "SkillFlames.h"
 #include "SkillWindMilStar.h"
 #include "SwordNinja.h"
+#include "SwordEnemyThrow.h"
 #include <vector>
 #include <queue>
 

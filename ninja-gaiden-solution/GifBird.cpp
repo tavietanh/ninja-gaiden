@@ -62,6 +62,34 @@ void GifBird::UpdateCollision(CObjectDx9* checkingObject)
 					{
 						ItemManager::getInstance()->AddElement(new ThrowStar(m_Position, eDirection::RIGHT, eObjectID::OBJECT_THROW_STAR));
 					}
+					if (m_IDItem == eObjectID::OBJECT_FLAMES)
+					{
+						ItemManager::getInstance()->AddElement(new Flames(m_Position, eDirection::RIGHT, eObjectID::OBJECT_FLAMES));
+					}
+					if (m_IDItem == eObjectID::OBJECT_WINDMIL_STAR)
+					{
+						ItemManager::getInstance()->AddElement(new WindMilStar(m_Position, eDirection::RIGHT, eObjectID::OBJECT_WINDMIL_STAR));
+					}
+					if (m_IDItem == eObjectID::OBJECT_1000_POINT)
+					{
+						ItemManager::getInstance()->AddElement(new Point1000(m_Position, eDirection::RIGHT, eObjectID::OBJECT_1000_POINT));
+					}
+					if (m_IDItem == eObjectID::OBJECT_10_POWER)
+					{
+						ItemManager::getInstance()->AddElement(new TenPower(m_Position, eDirection::RIGHT, eObjectID::OBJECT_10_POWER));
+					}
+					if (m_IDItem == eObjectID::OBJECT_500_POINT)
+					{
+						ItemManager::getInstance()->AddElement(new Point500(m_Position, eDirection::RIGHT, eObjectID::OBJECT_500_POINT));
+					}
+					if (m_IDItem == eObjectID::OBJECT_HEALTH)
+					{
+						ItemManager::getInstance()->AddElement(new Health(m_Position, eDirection::RIGHT, eObjectID::OBJECT_HEALTH));
+					}
+					if (m_IDItem == eObjectID::OBJECT_TIME_FREEZE)
+					{
+						ItemManager::getInstance()->AddElement(new Freeze(m_Position, eDirection::RIGHT, eObjectID::OBJECT_TIME_FREEZE));
+					}
 				}
 		}
 	}

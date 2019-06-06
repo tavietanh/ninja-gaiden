@@ -17,8 +17,6 @@ void SkillThrowStar::Initialize()
 	this->m_Physic->setVelocityX(1.0f);
 	this->m_Physic->setAccelerate(D3DXVECTOR2(0.0f, 0.0f));
 	this->m_TypeSkill = eIDTypeSkill::NINJA_THROW_STAR;
-	// because object class has a directattack
-	// don't use directack
 	this->m_DirectAttack = eDirectAttack::AD_TOP;
 	this->m_factor = 0;
 }

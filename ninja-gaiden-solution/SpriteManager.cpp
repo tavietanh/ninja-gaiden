@@ -64,7 +64,7 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRocket\\shoot.png", eSpriteID::SPRITE_ENEMY_ROCKET_SHOOT, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRocket\\bullet.png", eSpriteID::SPRITE_BULLET_ENEMY_ROCKET, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyThrowSword\\move.png", eSpriteID::SPRITE_ENEMY_THROW_SWORD_MOVE, 2, 1, 2);
-	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyThrowSword\\throw.png", eSpriteID::SPRITE_ENEMY_THROW_SWORD_SHOOT, 2, 1, 2);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyThrowSword\\throw.png", eSpriteID::SPRITE_ENEMY_THROW_SWORD_SHOOT, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyThrowSword\\sword.png", eSpriteID::SPRITE_SWORD_ENEMY_THROW, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\explosion.png", eSpriteID::SPRITE_EXPLOSION, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\GifBird\\GifBird.png", eSpriteID::SPRITE_GIF_BIRD, 2, 1, 2);

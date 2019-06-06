@@ -16,7 +16,7 @@ class Ninja : public DynamicObject
 	NinjaSpirte* m_NinjaSprite;
 	bool isFall;
 	bool isJump;
-	bool isLieDown;
+	bool isClimb;
 	bool isSetVelocityDeathState;
 	bool isInvulnerable;
 	unsigned char m_colorAlpha;
@@ -27,11 +27,14 @@ class Ninja : public DynamicObject
 	float m_timeDeath;
 	float m_timeBeforeDeadBottom;
 	int m_timeInvulnerable;
+	int maxClimb;
+	int minClimb;
 	D3DXVECTOR3 GetStartPositionOfSkill(float x,float y);
 	eIDSkillNinja m_SkillNinja;
+	eIDSkillNinja m_ItemNinja;
 	int UpdateInvulnerableAnimation();
 	int HandleInputSkilling();
-	int HandleInputBeforeDieState();
+	int HandleInputHangState();
 	int HandleInputClimbState();
 	int HandleInputDeadState();
 	int HandleInputSkillState();
@@ -66,6 +69,7 @@ public:
 	void Initialize();
 	void SetFlag();
 	void setSkillNinja(eIDSkillNinja _skillNinja) { this->m_SkillNinja = _skillNinja; };
+	void setItemNinja(eIDSkillNinja _itemNinja) { this->m_ItemNinja = _itemNinja; };
 	void setRectangleCheckingObjectBelow();
 	void Release();
 	void Render(SPRITEHANDLE spriteHandle);

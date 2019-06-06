@@ -51,6 +51,14 @@ void SkillPool::Initialize()
 		queueSwordNinja.push(temp);
 	}
 	m_SkillPool.push_back(queueSwordNinja);
+	std::queue<Skill*> queueSwordEnemy;
+	for (int i = 0; i < 10; ++i)
+	{
+		SwordEnemyThrow* temp = new SwordEnemyThrow(D3DXVECTOR3(0.0f, 0.0f, 0.5f), eDirection::TOP, eObjectID::BULLET_ENEMY);
+		temp->Initialize();
+		queueSwordEnemy.push(temp);
+	}
+	m_SkillPool.push_back(queueSwordEnemy);
 }
 
 Skill* SkillPool::popSkillFromSkillPool(eIDTypeSkill _typeSkill, D3DXVECTOR3 _position, D3DXVECTOR2 _velocity, float _factor, float _rotationAngle)
@@ -117,6 +125,21 @@ Skill* SkillPool::popSkillFromSkillPool(eIDTypeSkill _typeSkill, D3DXVECTOR3 _po
 			return object;
 		}
 		break;
+	case eIDTypeSkill::SWORD_ENEMY_THROW:
+		if (m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].empty() == false)
+		{
+			SwordEnemyThrow* object = (SwordEnemyThrow*)m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].front();
+			_position.z = 1.0f;
+			object->setPosition(_position);
+			object->setStartPosition(_position);
+			object->getPhysic()->setVelocity(_velocity);
+			object->setFactor(_factor);
+			object->ResetLivingTime();
+			m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].pop();
+
+			return object;
+		}
+		break;
 	default:
 		return 0;
 	}
@@ -125,8 +148,6 @@ Skill* SkillPool::popSkillFromSkillPool(eIDTypeSkill _typeSkill, D3DXVECTOR3 _po
 
 void SkillPool::addSkillToSkillPool(Skill* _object)
 {
-	//if(_object->getID() == eObjectID::Skill_RAMBO)
-	//{
 	switch (_object->getTypeSkill())
 	{
 	case eIDTypeSkill::NINJA_THROW_STAR:
@@ -144,6 +165,10 @@ void SkillPool::addSkillToSkillPool(Skill* _object)
 	case eIDTypeSkill::NINJA_SWORD:
 		_object->reset();
 		m_SkillPool[eIDTypeSkill::NINJA_SWORD].push((SwordNinja*)_object);
+		break;
+	case eIDTypeSkill::SWORD_ENEMY_THROW:
+		_object->reset();
+		m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].push((SwordEnemyThrow*)_object);
 		break;
 	default:
 		break;

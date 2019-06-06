@@ -124,6 +124,18 @@ void NinjaSpirte::UpdateAnimation(eObjectState _objectState)
 		m_Ninja->UpdateAnimation(200);
 	}
 	break;
+	case STATE_NINJA_HANG:
+	{
+		if (m_previousState != _objectState)
+		{
+			m_Position = D3DXVECTOR3(0, 0, 0);
+			m_frameSize = D3DXVECTOR2(16, 31);
+			m_Ninja = m_Climb;
+			resetInverseVariable();
+		}
+		m_Ninja->getAnimation()->setSourceRectAtIndex(0);
+	}
+	break;
 	case STATE_NINJA_CLIMB:
 	{
 		if (m_previousState != _objectState)

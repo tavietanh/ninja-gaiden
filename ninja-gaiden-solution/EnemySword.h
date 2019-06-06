@@ -18,7 +18,6 @@ public:
 	void UpdateCollision(CObjectDx9* checkingObject);
 	void UpdateAnimation();
 	void UpdateMovement();
-	bool CanCollisionWithVirtualObject(VirtualObject* virtualObject);
 	void Update();
 	void Render(SPRITEHANDLE spriteHandle);
 	void Release();

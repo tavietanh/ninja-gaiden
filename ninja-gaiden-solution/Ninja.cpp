@@ -31,7 +31,7 @@ Ninja::Ninja(D3DXVECTOR3 _position, eDirection _direction, eObjectID _objectID)
 	isJump = false;
 	isSetVelocityDeathState = false;
 	isFall = false;
-	isLieDown = false;
+	isClimb = false;
 	this->m_Physic->setAccelerate(D3DXVECTOR2(0.0f, -0.1f));
 	m_Position.z = 1.0f;
 	m_timeInvulnerable = 0;
@@ -166,6 +166,16 @@ void Ninja::HandleInput()
 			HandleInputDeadState();
 		}
 		break;
+		case STATE_NINJA_HANG:
+		{
+			HandleInputHangState();
+		}
+		break;
+		case STATE_NINJA_CLIMB:
+		{
+			HandleInputClimbState();
+		}
+		break;
 		default:
 			break;
 	}
@@ -184,7 +194,7 @@ int Ninja::HandleInputDeadState()
 {
 	if (!isSetVelocityDeathState)
 	{
-		m_Physic->setVelocityY(3.5f);
+		m_Physic->setVelocityY(2.0f);
 		if (m_Direction == eDirection::RIGHT)
 		{
 			m_Physic->setVelocityX(-0.5f);
@@ -235,6 +245,36 @@ int Ninja::HandleInputSkillState()
 		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
 	}
 	return 0;
+}
+int Ninja::HandleInputHangState() 
+{
+	if (m_Direction == eDirection::LEFT)
+	{
+		if (CInputDx9::getInstance()->IsKeyRightDownAndKeyXDown())
+		{
+			m_ObjectState = eObjectState::STATE_NINJA_JUMP;
+			m_Physic->setVelocityY(VELOCITY_Y_JUMP);
+			return 0;
+		}
+	}
+	if (m_Direction == eDirection::RIGHT)
+	{
+		if (CInputDx9::getInstance()->IsKeyLeftDownAndKeyXDown())
+		{
+			m_ObjectState = eObjectState::STATE_NINJA_JUMP;
+			m_Physic->setVelocityY(VELOCITY_Y_JUMP);
+			m_Physic->setVelocityX(-0.6f);
+			return 0;
+		}
+	}
+	if (isClimb)
+	{
+		if (CInputDx9::getInstance()->IsKeyUpDownAndKeyDownUp() || CInputDx9::getInstance()->IsKeyUpUpAndKeyDownDown())
+		{
+			m_ObjectState = eObjectState::STATE_NINJA_CLIMB;
+			return 0;
+		}
+	}
 }
 int Ninja::HandleInputSitState()
 {
@@ -414,7 +454,34 @@ int Ninja::HandleInputRunState()
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 		m_Physic->setVelocityY(VELOCITY_Y_JUMP);
+
 		return 0;
+	}
+	return 0;
+}
+int Ninja::HandleInputClimbState()
+{
+	if (CInputDx9::getInstance()->IsKeyUpDownAndKeyDownUp())
+	{
+		m_Physic->setVelocityY(VELOCITY_X_MOVE_TO_RIGHT/2);
+		if (m_Position.y >= maxClimb)
+		{
+			m_Position.y = maxClimb;
+			m_Physic->setVelocityY(0.0f);
+		}
+	}
+	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyDownDown())
+	{
+		m_Physic->setVelocityY(VELOCITY_Y_MOVE_TO_LEFT/2);
+		if (m_Position.y <= minClimb)
+		{
+			m_Position.y = minClimb;
+			m_Physic->setVelocityY(0.0f);
+		}
+	}
+	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyDownUp() || CInputDx9::getInstance()->IsKeyUpDownAndKeyDownDown())
+	{
+		m_ObjectState = eObjectState::STATE_NINJA_HANG;
 	}
 	return 0;
 }
@@ -478,18 +545,6 @@ void Ninja::UseSkill()
 			}
 		}
 		break;
-	case ITEM_HEALTH:
-		break;
-	case ITEM_5_POWER:
-		break;
-	case ITEM_10_POWER:
-		break;
-	case ITEM_500_POINT:
-		break;
-	case ITEM_1000_POINT:
-		break;
-	case ITEM_FREEZE:
-		break;
 	default:
 		break;
 	}
@@ -537,47 +592,17 @@ int Ninja::UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* che
 			}
 			else
 			{
-				/*if (m_ObjectState == STATE_RAMBO_LIE)
+				if (m_ObjectState == STATE_NINJA_HANG || m_ObjectState == STATE_NINJA_CLIMB)
 				{
-					this->m_Position.y += this->m_Collision->m_MoveY;
-					m_Physic->setVelocityY(0.0f);
-					if (CInputDx9::getInstance()->IsKeyDown(DIK_X) && m_objectBelowPrevious.size() > 1)
-					{
-						m_ignoreCollisionObject = checkingObject;
-						m_ObjectState = STATE_RAMBO_FALL;
-					}
+					m_Physic->setVelocityX(0.0f);
 					return 0;
 				}
-				else
-				{
-					if (m_ObjectState == eObjectState::STATE_RAMBO_SWIM || m_ObjectState == eObjectState::STATE_RAMBO_SWIM_SHOOT ||
-						m_ObjectState == eObjectState::STATE_RAMBO_SWIM_SHOOT_UP || m_ObjectState == eObjectState::STATE_RAMBO_SWIM_SHOOT_TOP_RIGHT)
-					{
-						if ((m_Position.x >= checkingObject->getBound().left && m_Physic->getVelocity().x > 0) ||
-							(m_Position.x <= checkingObject->getBound().right && m_Physic->getVelocity().x < 0))
-						{
-							m_ObjectState = eObjectState::STATE_RAMBO_CLIMB;
-							return 0;
-						}
-						return 0;
-					}
-					else
-					{
-						if (m_ObjectState == eObjectState::STATE_RAMBO_CLIMB)
-						{
-							m_Physic->setVelocityX(0.0f);
-							return 0;
-						}
-						else
-						{*/
-							isJump = false;
-							this->m_Position.y += this->m_Collision->m_MoveY;
-							m_Physic->setVelocityY(0.0f);
-							return 0;
-
-						/*}
-					}
-				}*/
+				else {
+					isJump = false;
+					this->m_Position.y += this->m_Collision->m_MoveY;
+					m_Physic->setVelocityY(0.0f);
+					return 0;
+				}
 			}
 		}
 
@@ -623,6 +648,72 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 				UpdateCollisionTileBase(collideDirection, checkingObject);
 			}
 			break;
+			case eObjectID::VIRTUAL_OBJECT_WALL:
+			{
+				if (collideDirection == IDDirection::DIR_RIGHT)
+				{
+					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
+					{
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
+					{
+						m_ObjectState = eObjectState::STATE_NINJA_HANG;
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+				}
+				if (collideDirection == IDDirection::DIR_LEFT)
+				{
+					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
+					{
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
+					{
+						m_ObjectState = eObjectState::STATE_NINJA_HANG;
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+				}
+			}
+			case eObjectID::VIRTUAL_OBJECT_CLIMB:
+			{
+				maxClimb = checkingObject->getBound().top;
+				minClimb = checkingObject->getBound().bottom;
+				if (collideDirection == IDDirection::DIR_RIGHT)
+				{
+					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
+					{
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
+					{
+						m_ObjectState = eObjectState::STATE_NINJA_HANG;
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+						isClimb = true;
+					}
+				}
+				if (collideDirection == IDDirection::DIR_LEFT)
+				{
+					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
+					{
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+					}
+					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
+					{
+						m_ObjectState = eObjectState::STATE_NINJA_HANG;
+						this->m_Position.x += this->m_Collision->m_MoveX;
+						m_Physic->setVelocityX(0.0f);
+						isClimb = true;
+					}
+				}
+			}
 			default:
 				break;
 			}
@@ -630,6 +721,8 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 		default:
 			switch (checkingObject->getID())
 			{
+			case eObjectID::BULLET_ENEMY:
+			case eObjectID::ENEMY_THROW_SWORD:
 			case eObjectID::ENEMY_SWORD:
 				if (isInvulnerable)
 				{
@@ -728,7 +821,7 @@ void Ninja::SetVelocityXZero()
 	
 	case STATE_NINJA_IDLE:
 	case STATE_NINJA_FALL:
-	case STATE_NINJA_CLIMB:
+	case STATE_NINJA_HANG:
 		m_Physic->setVelocityX(0.0f);
 		return;
 	default:
@@ -746,7 +839,7 @@ void Ninja::SetVelocityYZero()
 	case STATE_NINJA_HIT:
 	case STATE_NINJA_RUN:
 		return;
-	case STATE_NINJA_CLIMB:
+	case STATE_NINJA_HANG:
 		m_Physic->setVelocityY(0.0f);
 		return;
 	default:
