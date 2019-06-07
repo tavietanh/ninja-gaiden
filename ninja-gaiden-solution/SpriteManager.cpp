@@ -58,8 +58,7 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyMachineGun\\move.png", eSpriteID::SPRITE_ENEMY_MACHINE_GUN_MOVE, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyMachineGun\\shoot.png", eSpriteID::SPRITE_ENEMY_MACHINE_GUN_SHOOT, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyMachineGun\\bullet.png", eSpriteID::SPRITE_BULLET_ENEMY_MACHINE_GUN, 1, 1, 1);
-	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyPanther\\jump.png", eSpriteID::SPRITE_ENEMY_PANTHER_JUMP, 1, 1, 1);
-	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyPanther\\run.png", eSpriteID::SPRITE_ENEMY_PANTHER_RUN, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyPanther\\alivemove.png", eSpriteID::SPRITE_ENEMY_PANTHER, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRocket\\idle.png", eSpriteID::SPRITE_ENEMY_ROCKET_IDLE, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRocket\\shoot.png", eSpriteID::SPRITE_ENEMY_ROCKET_SHOOT, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRocket\\bullet.png", eSpriteID::SPRITE_BULLET_ENEMY_ROCKET, 1, 1, 1);

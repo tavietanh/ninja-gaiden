@@ -4,6 +4,7 @@
 #include "DynamicObject.h"
 #include "VirtualObject.h"
 #include "CCamera.h"
+#include "Skill.h"
 class EnemyEagle : public DynamicObject
 {
 private:
@@ -17,7 +18,6 @@ public:
 	void UpdateCollision(CObjectDx9* checkingObject);
 	void UpdateAnimation();
 	void UpdateMovement();
-	bool CanCollisionWithVirtualObject(VirtualObject* virtualObject);
 	void Update();
 	void Render(SPRITEHANDLE spriteHandle);
 	void Release();

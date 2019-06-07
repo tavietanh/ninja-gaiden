@@ -30,9 +30,9 @@ void SkillManager::addSkillIntoList(eIDTypeSkill typeSkill, D3DXVECTOR3 position
 	{
 		this->m_ListSkillInGame.push_back((SwordNinja*)SkillPool::getInstance()->popSkillFromSkillPool(typeSkill, position, _velocity, _factor));
 	}
-	if (typeSkill == eIDTypeSkill::SWORD_ENEMY_THROW)
+	if (typeSkill == eIDTypeSkill::ENEMY_BULLET)
 	{
-		this->m_ListSkillInGame.push_back((SwordEnemyThrow*)SkillPool::getInstance()->popSkillFromSkillPool(typeSkill, position, _velocity, _factor));
+		this->m_ListSkillInGame.push_back((BulletEnemy*)SkillPool::getInstance()->popSkillFromSkillPool(typeSkill, position, _velocity, _factor));
 	}
 }
 

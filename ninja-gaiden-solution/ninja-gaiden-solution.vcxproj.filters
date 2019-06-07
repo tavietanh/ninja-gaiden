@@ -363,7 +363,7 @@
     <ClInclude Include="SwordNinja.h">
       <Filter>Game Object\Skill\Skill Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="SwordEnemyThrow.h">
+    <ClInclude Include="BulletEnemy.h">
       <Filter>Game Object\Skill\Skill Enemy</Filter>
     </ClInclude>
   </ItemGroup>
@@ -527,7 +527,7 @@
     <ClCompile Include="SwordNinja.cpp">
       <Filter>Game Object\Skill\Skill Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="SwordEnemyThrow.cpp">
+    <ClCompile Include="BulletEnemy.cpp">
       <Filter>Game Object\Skill\Skill Enemy</Filter>
     </ClCompile>
   </ItemGroup>

@@ -174,10 +174,10 @@ void EnemyThrowSword::Update()
 			{
 				if (m_Direction == eDirection::LEFT)
 				{
-					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::SWORD_ENEMY_THROW, GetStartPositionOfSkill(0, 14), D3DXVECTOR2(-0.8f, 2.0f), 0);
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::ENEMY_BULLET, GetStartPositionOfSkill(0, 14), D3DXVECTOR2(-0.8f, 2.0f), 0);
 				}
 				else 
-					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::SWORD_ENEMY_THROW, GetStartPositionOfSkill(0, 14), D3DXVECTOR2(0.8f, 2.0f), 0);
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::ENEMY_BULLET, GetStartPositionOfSkill(0, 14), D3DXVECTOR2(0.8f, 2.0f), 0);
 				isShoot = false;
 				m_Physic->setVelocityX(preVelocity.x);
 				m_Position.y = m_Position.y - 5;

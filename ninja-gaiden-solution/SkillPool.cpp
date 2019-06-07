@@ -51,14 +51,14 @@ void SkillPool::Initialize()
 		queueSwordNinja.push(temp);
 	}
 	m_SkillPool.push_back(queueSwordNinja);
-	std::queue<Skill*> queueSwordEnemy;
-	for (int i = 0; i < 10; ++i)
+	std::queue<Skill*> queueBulletEnemy;
+	for (int i = 0; i < 50; ++i)
 	{
-		SwordEnemyThrow* temp = new SwordEnemyThrow(D3DXVECTOR3(0.0f, 0.0f, 0.5f), eDirection::TOP, eObjectID::BULLET_ENEMY);
+		BulletEnemy* temp = new BulletEnemy(D3DXVECTOR3(0.0f, 0.0f, 0.5f), eDirection::TOP, eObjectID::BULLET_ENEMY);
 		temp->Initialize();
-		queueSwordEnemy.push(temp);
+		queueBulletEnemy.push(temp);
 	}
-	m_SkillPool.push_back(queueSwordEnemy);
+	m_SkillPool.push_back(queueBulletEnemy);
 }
 
 Skill* SkillPool::popSkillFromSkillPool(eIDTypeSkill _typeSkill, D3DXVECTOR3 _position, D3DXVECTOR2 _velocity, float _factor, float _rotationAngle)
@@ -125,17 +125,17 @@ Skill* SkillPool::popSkillFromSkillPool(eIDTypeSkill _typeSkill, D3DXVECTOR3 _po
 			return object;
 		}
 		break;
-	case eIDTypeSkill::SWORD_ENEMY_THROW:
-		if (m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].empty() == false)
+	case eIDTypeSkill::ENEMY_BULLET:
+		if (m_SkillPool[eIDTypeSkill::ENEMY_BULLET].empty() == false)
 		{
-			SwordEnemyThrow* object = (SwordEnemyThrow*)m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].front();
+			BulletEnemy* object = (BulletEnemy*)m_SkillPool[eIDTypeSkill::ENEMY_BULLET].front();
 			_position.z = 1.0f;
 			object->setPosition(_position);
 			object->setStartPosition(_position);
 			object->getPhysic()->setVelocity(_velocity);
 			object->setFactor(_factor);
 			object->ResetLivingTime();
-			m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].pop();
+			m_SkillPool[eIDTypeSkill::ENEMY_BULLET].pop();
 
 			return object;
 		}
@@ -166,9 +166,9 @@ void SkillPool::addSkillToSkillPool(Skill* _object)
 		_object->reset();
 		m_SkillPool[eIDTypeSkill::NINJA_SWORD].push((SwordNinja*)_object);
 		break;
-	case eIDTypeSkill::SWORD_ENEMY_THROW:
+	case eIDTypeSkill::ENEMY_BULLET:
 		_object->reset();
-		m_SkillPool[eIDTypeSkill::SWORD_ENEMY_THROW].push((SwordEnemyThrow*)_object);
+		m_SkillPool[eIDTypeSkill::ENEMY_BULLET].push((BulletEnemy*)_object);
 		break;
 	default:
 		break;

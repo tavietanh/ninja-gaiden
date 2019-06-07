@@ -14,6 +14,7 @@ protected:
 	D3DXVECTOR3 m_StartPosition;
 	float m_livingTime;
 	float m_factor;
+	CSpriteDx9* sprite_dead;
 public:
 	eIDTypeSkill getTypeSkill() const { return m_TypeSkill; };
 	void setTypeSkill(eIDTypeSkill _typeSkill) { this->m_TypeSkill = _typeSkill; };

@@ -43,6 +43,10 @@ void TestSpriteState::Update()
 
 	for (std::list<Skill*>::iterator i = SkillManager::getInstance()->m_ListSkillInGame.begin(); i != SkillManager::getInstance()->m_ListSkillInGame.end(); ++i)
 	{
+		for (std::list<Skill*>::iterator j = SkillManager::getInstance()->m_ListSkillInGame.begin(); j != SkillManager::getInstance()->m_ListSkillInGame.end(); ++j)
+		{
+			(*i)->UpdateCollision(*j);
+		}
 		m_Grid->UpdateCollision(*i);
 		m_Ninja->UpdateCollision(*i);
 	}

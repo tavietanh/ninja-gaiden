@@ -618,6 +618,16 @@ int Ninja::UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* che
 		}
 		return 0;
 	}
+
+	else if (collideDirection == IDDirection::DIR_LEFT)
+	{
+		return 0;
+	}
+
+	else if (collideDirection == IDDirection::DIR_RIGHT)
+	{
+		return 0;
+	}
 	return 1;
 }
 
@@ -681,15 +691,10 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 			}
 			case eObjectID::VIRTUAL_OBJECT_CLIMB:
 			{
-				maxClimb = checkingObject->getBound().top;
-				minClimb = checkingObject->getBound().bottom;
+				maxClimb = checkingObject->getBound().top+31;
+				minClimb = checkingObject->getBound().bottom+31;
 				if (collideDirection == IDDirection::DIR_RIGHT)
 				{
-					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
-					{
-						this->m_Position.x += this->m_Collision->m_MoveX;
-						m_Physic->setVelocityX(0.0f);
-					}
 					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
 					{
 						m_ObjectState = eObjectState::STATE_NINJA_HANG;
@@ -700,11 +705,6 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 				}
 				if (collideDirection == IDDirection::DIR_LEFT)
 				{
-					if (m_ObjectState == eObjectState::STATE_NINJA_RUN)
-					{
-						this->m_Position.x += this->m_Collision->m_MoveX;
-						m_Physic->setVelocityX(0.0f);
-					}
 					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
 					{
 						m_ObjectState = eObjectState::STATE_NINJA_HANG;
@@ -802,6 +802,7 @@ void Ninja::SetFallFlag()
 	case STATE_NINJA_IDLE:
 	case STATE_NINJA_RUN:
 	case STATE_NINJA_JUMP:
+		isClimb = false;
 	case STATE_NINJA_CLIMB:
 		isFall = false;
 		break;
