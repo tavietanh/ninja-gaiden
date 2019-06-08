@@ -54,6 +54,8 @@ namespace MapEditor.Framwork
 
             Support.WIDTH_MAP = int.Parse(rootNode.Attributes["Width"].Value);
             Support.HEIGHT_MAP = int.Parse(rootNode.Attributes["Height"].Value);
+            Support.COL = Convert.ToInt32(Math.Ceiling((float)Support.WIDTH_MAP / Support.SIZE_CELLS_WIDTH));
+            Support.ROW = Convert.ToInt32(Math.Ceiling((float)Support.HEIGHT_MAP / Support.SIZE_CELLS_HEIGHT));
             Support.MAPNAME = rootNode.Attributes["Name"].Value;
             
             XmlNodeList nodeList;

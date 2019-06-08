@@ -22,6 +22,7 @@ bool IsMovementObject(eObjectID id)
 		case eObjectID::ENEMY_PANTHER:
 		case eObjectID::ENEMY_MACHINE_GUN:
 		case eObjectID::ENEMY_RUN:
+		case eObjectID::BOSS_3:
 		case eObjectID::OBJECT_5_POWER:
 		case eObjectID::OBJECT_10_POWER:
 		case eObjectID::OBJECT_500_POINT:

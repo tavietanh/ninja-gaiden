@@ -120,6 +120,33 @@ void Ninja::UpdateMovement()
 	}
 	CGlobal::Ninja_X = (int)(getPositionVec2().x);
 	CGlobal::Ninja_Y = (int)(getPositionVec2().y);
+}void Ninja::Hit()
+{
+	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
+	{
+		if (m_Direction == eDirection::LEFT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+		if (m_Direction == eDirection::RIGHT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+	}
+}
+void Ninja::SitHit()
+{
+	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
+	{
+		if (m_Direction == eDirection::LEFT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+		if (m_Direction == eDirection::RIGHT)
+		{
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
+		}
+	}
 }
 void Ninja::HandleInput()
 {
@@ -293,6 +320,7 @@ int Ninja::HandleInputSitState()
 	}
 	if(CInputDx9::getInstance()->IsKeyDown(DIK_Z)&& CInputDx9::getInstance()->IsKeyDown(DIK_DOWN))
 	{
+		SitHit();
 		m_ObjectState = eObjectState::STATE_NINJA_SIT_HIT;
 	}
 	return 0;
@@ -303,17 +331,6 @@ int Ninja::HandleInputSitHitState()
 	if (m_timeHit > 600)
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_SIT;
-	}
-	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
-	{
-		if (m_Direction == eDirection::LEFT)
-		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
-		}
-		if (m_Direction == eDirection::RIGHT)
-		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
-		}
 	}
 	return 0;
 }
@@ -346,6 +363,7 @@ int Ninja::HandleInputIdleState()
 	}
 	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
+		Hit();
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
 		return 0;
 	}
@@ -383,12 +401,15 @@ int Ninja::HandleInputJumpState()
 	}
 	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
+		Hit();
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
+		return 0;
 	}
 	if (CInputDx9::getInstance()->IsKeyUpDownAndKeyZDown())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_SKILL;
 		UseSkill();
+		return 0;
 	}
 	return 0;
 }
@@ -411,22 +432,11 @@ int Ninja::HandleInputHitState()
 		}
 	}
 	m_timeHit += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+
 	if (m_timeHit > 600)
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
 	}
-	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
-	{
-		if (m_Direction == eDirection::LEFT)
-		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
-		}
-		if (m_Direction == eDirection::RIGHT)
-		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
-		}
-	}
-	
 	return 0;
 }
 int Ninja::HandleInputRunState()
@@ -447,6 +457,7 @@ int Ninja::HandleInputRunState()
 	}
 	if (CInputDx9::getInstance()->IsKeyUpUpAndKeyZDown())
 	{
+		Hit();
 		m_ObjectState = eObjectState::STATE_NINJA_HIT;
 		return 0;
 	}
@@ -721,7 +732,14 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 		default:
 			switch (checkingObject->getID())
 			{
+			case eObjectID::ENEMY_RUN:
+			case eObjectID::ENEMY_BROWN_BAT:
+			case eObjectID::BOSS_3:
+			case eObjectID::ENEMY_PANTHER:
+			case eObjectID::ENEMY_EAGLE:
+			case eObjectID::ENEMY_MACHINE_GUN:
 			case eObjectID::BULLET_ENEMY:
+			case eObjectID::ENEMY_ROCKET:
 			case eObjectID::ENEMY_THROW_SWORD:
 			case eObjectID::ENEMY_SWORD:
 				if (isInvulnerable)

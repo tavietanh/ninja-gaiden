@@ -65,6 +65,8 @@ public:
 	void SetInvulnerable(bool para) { this->isInvulnerable = para; };
 	int UpdateCollisionTileBase(IDDirection collideDirection, CObjectDx9* checkingObject);
 	RECT getBound();
+	void Hit();
+	void SitHit();
 	void UseSkill();
 	void Initialize();
 	void SetFlag();

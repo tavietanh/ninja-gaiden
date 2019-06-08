@@ -165,7 +165,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	CInputDx9::getInstance()->InitializeKeyBoardDevice(m_handleWindow);
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
-	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,1));
+	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,3));
 	return true;
 }
 

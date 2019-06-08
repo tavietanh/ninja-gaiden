@@ -38,6 +38,7 @@ CSpriteDx9* SpriteManager::getSprite(eSpriteID eID)
 void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 {
 	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\1\\1.png", eSpriteID::SPRITE_MAP_1, 79, 1, 79);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\3\\3.png", eSpriteID::SPRITE_MAP_3, 41, 1, 41);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_run.png", eSpriteID::SPRITE_NINJA_RUN, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_hit.png", eSpriteID::SPRITE_NINJA_HIT, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_jump.png", eSpriteID::SPRITE_NINJA_JUMP, 4, 1, 4);
@@ -50,8 +51,7 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_sword.png", eSpriteID::SPRITE_SWORD_NINJA, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyRun\\enemy_run.png", eSpriteID::SPRITE_ENEMY_RUN, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemySword\\enemy_sword.png", eSpriteID::SPRITE_ENEMY_SWORD, 3, 1, 3);
-	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\idle.png", eSpriteID::SPRITE_BOSS_IDLE, 1, 1, 1);
-	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\jump.png", eSpriteID::SPRITE_BOSS_JUMP, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\alivejump.png", eSpriteID::SPRITE_BOSS, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\bullet.png", eSpriteID::SPRITE_BULLET_BOSS, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyBrownBat\\alivemove.png", eSpriteID::SPRITE_ENEMY_BROWN_BAT, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyEagle\\alivemove.png", eSpriteID::SPRITE_ENEMY_EAGLE, 2, 1, 2);

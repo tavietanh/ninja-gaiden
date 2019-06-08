@@ -5,6 +5,7 @@
 #include "DynamicObject.h"
 #include "VirtualObject.h"
 #include "CCamera.h"
+#include "Skill.h"
 class EnemyBrownBat : public DynamicObject
 {
 private:

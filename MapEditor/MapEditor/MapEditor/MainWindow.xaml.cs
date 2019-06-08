@@ -199,7 +199,7 @@ namespace MapEditor
                 if (Support.Grid == null)
                 {
                     int count = 0;
-                    for (int row = 1; row < Support.ROW; row++)
+                    for (int row = 1; row < Support.ROW+1; row++)
                     {
                         for (int col = 0; col < Support.COL; col++)
                         {
@@ -636,7 +636,8 @@ namespace MapEditor
                     Support.map = new CMap(new BitmapImage(new Uri(openFileDialogSourcePicture.FileName, UriKind.Absolute)));
                     Support.WIDTH_MAP = (int)(Support.map.BitMap.PixelWidth);
                     Support.HEIGHT_MAP = (int)(Support.map.BitMap.PixelHeight);
-                    
+                    Support.COL = Convert.ToInt32(Math.Ceiling((float)Support.WIDTH_MAP / Support.SIZE_CELLS_WIDTH));
+                    Support.ROW = Convert.ToInt32(Math.Ceiling((float)Support.HEIGHT_MAP / Support.SIZE_CELLS_HEIGHT));
                     if (Support.GRIDLINE == true)
                     {
                         DestroyGridline();
