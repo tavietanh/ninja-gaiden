@@ -4,6 +4,7 @@
 #include "DynamicObject.h"
 #include "VirtualObject.h"
 #include "CCamera.h"
+#include "Skill.h"
 class EnemyPanther : public DynamicObject
 {
 private:

@@ -54,11 +54,11 @@ void Grid::InsertObjectIntoView(RECT viewPort, std::vector<Cell*> cells)
 		}
 		else
 		{
-			cells[a]->isInView = false;
-			for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
-			{
-				mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();
-			}
+			//cells[a]->isInView = false;
+			//for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
+			//{
+			//	mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();
+			//}
 		}
 	}
 }

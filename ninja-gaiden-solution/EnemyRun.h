@@ -4,7 +4,7 @@
 #include "DynamicObject.h"
 #include "VirtualObject.h"
 #include "CCamera.h"
-
+#include "Skill.h"
 class EnemyRun : public DynamicObject
 {
 private:

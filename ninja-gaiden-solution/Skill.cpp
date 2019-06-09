@@ -44,7 +44,7 @@ void Skill::Render(SPRITEHANDLE spriteHandle)
 void Skill::Update()
 {
 	m_livingTime += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
-	if (this->getTypeSkill() == eIDTypeSkill::NINJA_SWORD && m_livingTime>400)
+	if (this->getTypeSkill() == eIDTypeSkill::NINJA_SWORD && m_livingTime>200)
 	{
 		m_ObjectState = eObjectState::STATE_DEATH;
 		reset();

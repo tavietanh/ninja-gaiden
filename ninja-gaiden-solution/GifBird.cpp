@@ -82,6 +82,10 @@ void GifBird::UpdateCollision(CObjectDx9* checkingObject)
 					{
 						ItemManager::getInstance()->AddElement(new Point500(m_Position, eDirection::RIGHT, eObjectID::OBJECT_500_POINT));
 					}
+					if (m_IDItem == eObjectID::OBJECT_5_POWER)
+					{
+						ItemManager::getInstance()->AddElement(new Point500(m_Position, eDirection::RIGHT, eObjectID::OBJECT_500_POINT));
+					}
 					if (m_IDItem == eObjectID::OBJECT_HEALTH)
 					{
 						ItemManager::getInstance()->AddElement(new Health(m_Position, eDirection::RIGHT, eObjectID::OBJECT_HEALTH));

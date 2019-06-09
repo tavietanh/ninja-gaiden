@@ -511,8 +511,8 @@ namespace MapEditor
                             if (WorkspaceWorking.Children[i] is Rectangle)
                             {
                                 Rectangle convertingObject = (Rectangle)(WorkspaceWorking.Children[i]);
-                                if (convertingObject.Tag == Support.virtualObject && ((int)cursorImage.Tag == (int)ObjectID.NINJA
-                                    || (int)cursorImage.Tag == (int)ObjectID.ENEMY_PANTHER)
+                                if (convertingObject.Tag == Support.virtualObject && ((int)cursorImage.Tag == (int)ObjectID.NINJA)
+                                    || (int)cursorImage.Tag == (int)ObjectID.ENEMY_PANTHER
                                     || (int)cursorImage.Tag == (int)ObjectID.ENEMY_MACHINE_GUN
                                     || (int)cursorImage.Tag == (int)ObjectID.ENEMY_ROCKET
                                     || (int)cursorImage.Tag == (int)ObjectID.ENEMY_RUN

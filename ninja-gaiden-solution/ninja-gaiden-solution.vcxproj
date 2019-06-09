@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -85,7 +85,7 @@
       <PreprocessorDefinitions>MARKUP_STL</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dinput8.lib;dxguid.lib;dsound.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -137,6 +137,7 @@
     <ClInclude Include="CSurfaceDx9.h" />
     <ClInclude Include="CTextureDx9.h" />
     <ClInclude Include="CTimeSpanDx9.h" />
+    <ClInclude Include="DSutil.h" />
     <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="EDirectAttack.h" />
     <ClInclude Include="EIDSceneGame.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="EnemyThrowSword.h" />
     <ClInclude Include="EObjectID.h" />
     <ClInclude Include="EObjectState.h" />
+    <ClInclude Include="eSoundID.h" />
     <ClInclude Include="ESpriteEffect.h" />
     <ClInclude Include="ESpriteID.h" />
     <ClInclude Include="ETypeObject.h" />
@@ -179,6 +181,8 @@
     <ClInclude Include="SkillPool.h" />
     <ClInclude Include="SkillThrowStar.h" />
     <ClInclude Include="SkillWindMilStar.h" />
+    <ClInclude Include="SoundBuffer.h" />
+    <ClInclude Include="SoundMangerDx9.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="SweptAABB.h" />
     <ClInclude Include="BulletEnemy.h" />
@@ -206,6 +210,7 @@
     <ClCompile Include="CSurfaceDx9.cpp" />
     <ClCompile Include="CTextureDx9.cpp" />
     <ClCompile Include="CTimeSpanDx9.cpp" />
+    <ClCompile Include="DSutil.cpp" />
     <ClCompile Include="DynamicObject.cpp" />
     <ClCompile Include="EnemyBrownBat.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
@@ -235,6 +240,8 @@
     <ClCompile Include="SkillPool.cpp" />
     <ClCompile Include="SkillThrowStar.cpp" />
     <ClCompile Include="SkillWindMilStar.cpp" />
+    <ClCompile Include="SoundBuffer.cpp" />
+    <ClCompile Include="SoundMangerDx9.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="BulletEnemy.cpp" />
     <ClCompile Include="SwordNinja.cpp" />

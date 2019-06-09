@@ -163,6 +163,9 @@
     <Filter Include="Game Object\Skill\Skill Enemy">
       <UniqueIdentifier>{ea0b9061-c5d9-431e-8d61-cc0d64f4fed2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Sound">
+      <UniqueIdentifier>{e27024d9-2bc3-41e8-8f33-9d06038ed3c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCamera.h">
@@ -366,6 +369,18 @@
     <ClInclude Include="BulletEnemy.h">
       <Filter>Game Object\Skill\Skill Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="SoundMangerDx9.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBuffer.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="DSutil.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="eSoundID.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -529,6 +544,15 @@
     </ClCompile>
     <ClCompile Include="BulletEnemy.cpp">
       <Filter>Game Object\Skill\Skill Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMangerDx9.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="DSutil.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBuffer.cpp">
+      <Filter>Framework\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

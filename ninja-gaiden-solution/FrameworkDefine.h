@@ -25,4 +25,13 @@
 
 #define DIRECTINPUT_VERSION         DIRECTINPUT_HEADER_VERSION
 
+#ifndef __CSOUNDSWITCH__
+#define __CSOUNDSWITCH__
+struct CSoundSwitch
+{
+	static bool IsExit;
+	static bool IsMute;
+};
+#endif // __CSOUNDSWITCH__
+
 #endif
