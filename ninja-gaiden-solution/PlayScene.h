@@ -29,6 +29,8 @@ private:
 	CSpriteDx9* testSprite;
 	SoundBuffer*		m_SoundBackGround;
 	background	m_background;
+	int m_timefreeze;
+	bool isDead;
 public:
 	TestSpriteState(eIDSceneGame ID, int _map) : GameScene(ID) { map = _map; }
 	~TestSpriteState() {}

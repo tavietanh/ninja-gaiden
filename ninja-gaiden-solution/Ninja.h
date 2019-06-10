@@ -72,6 +72,7 @@ public:
 	void SetFlag();
 	void setSkillNinja(eIDItem _skillNinja) { this->m_SkillNinja = _skillNinja; };
 	void setItemNinja(eIDItem _itemNinja) { this->m_ItemNinja = _itemNinja; };
+	eIDItem getItemNinja() { return this->m_ItemNinja; };
 	void setRectangleCheckingObjectBelow();
 	void Release();
 	void Render(SPRITEHANDLE spriteHandle);

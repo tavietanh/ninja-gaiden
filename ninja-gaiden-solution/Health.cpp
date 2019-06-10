@@ -40,6 +40,7 @@ void Health::UpdateCollision(CObjectDx9* checkingObject)
 					temp->SetInvulnerable(true);
 					temp->setItemNinja(eIDItem::ITEM_HEALTH);
 					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
+					CGlobal::healthNinja += 6;
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

@@ -188,7 +188,7 @@
     <ClInclude Include="BulletEnemy.h" />
     <ClInclude Include="SwordNinja.h" />
     <ClInclude Include="TenPower.h" />
-    <ClInclude Include="TestSpriteState.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ThrowStar.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="VirtualObject.h" />
@@ -247,7 +247,7 @@
     <ClCompile Include="BulletEnemy.cpp" />
     <ClCompile Include="SwordNinja.cpp" />
     <ClCompile Include="TenPower.cpp" />
-    <ClCompile Include="TestSpriteState.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="ThrowStar.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="VirtualObject.cpp" />

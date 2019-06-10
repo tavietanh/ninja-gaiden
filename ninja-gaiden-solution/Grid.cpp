@@ -40,7 +40,7 @@ void Grid::InsertObjectIntoView(RECT viewPort, std::vector<Cell*> cells)
 
 					if (j == mListObjectCollisionInView.size())
 					{
-						if (CheckAABB(ConvertToBox(viewPort), ConvertToBox(mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getBound())))
+						//if (CheckAABB(ConvertToBox(viewPort), ConvertToBox(mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->getBound())))
 							mListObjectCollisionInView.push_back(cells[a]->mListObjectCollision[i]);
 						/*else
 							mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();*/
@@ -54,11 +54,11 @@ void Grid::InsertObjectIntoView(RECT viewPort, std::vector<Cell*> cells)
 		}
 		else
 		{
-			//cells[a]->isInView = false;
-			//for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
-			//{
-			//	mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();
-			//}
+			cells[a]->isInView = false;
+			for (int i = 0; i < (int)cells[a]->mListObjectCollision.size(); ++i)
+			{
+				mMapObjectCollisionInGame[cells[a]->mListObjectCollision[i]]->Release();
+			}
 		}
 	}
 }

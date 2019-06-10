@@ -12,7 +12,7 @@
 #include <d3dx9.h>
 #include <dsound.h>
 #include <DXGI.h>
-#include "TestSpriteState.h"
+#include "PlayScene.h"
 #include "SoundMangerDx9.h"
 // Factory designPattern
 
