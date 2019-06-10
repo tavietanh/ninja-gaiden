@@ -40,6 +40,8 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\1\\1.png", eSpriteID::SPRITE_MAP_1, 79, 1, 79);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\2\\2.png", eSpriteID::SPRITE_MAP_2, 49, 1, 49);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\3\\3.png", eSpriteID::SPRITE_MAP_3, 41, 1, 41);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\background.png", eSpriteID::SPRITE_BACKGROUND, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Map\\number.png", eSpriteID::SPRITE_NUMBER, 10, 1, 10);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_run.png", eSpriteID::SPRITE_NINJA_RUN, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_hit.png", eSpriteID::SPRITE_NINJA_HIT, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Ninja\\ninja_jump.png", eSpriteID::SPRITE_NINJA_JUMP, 4, 1, 4);

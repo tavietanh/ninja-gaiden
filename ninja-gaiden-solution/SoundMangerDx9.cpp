@@ -23,8 +23,22 @@ void SoundManagerDx9::LoadSoundBuffer(const char* fileName, eSoundID eID, LPDIRE
 
 void SoundManagerDx9::LoadAllSoundBuffer(LPDIRECTSOUND8 _lpDSound)
 {
-
-
+	this->LoadSoundBuffer("resources\\Sound\\background1.wav", eSoundID::SOUND_BACKGROUND_1, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\background2.wav", eSoundID::SOUND_BACKGROUND_2, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\background3.wav", eSoundID::SOUND_BACKGROUND_3, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\boss.wav", eSoundID::SOUND_BOSS, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\gameover.wav", eSoundID::SOUND_DEAD, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\explosion.wav", eSoundID::SOUND_EXPLOSION, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\flames.wav", eSoundID::SOUND_FLAMES, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\machinegun.wav", eSoundID::SOUND_MACHINE_GUN, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\climb.wav", eSoundID::SOUND_NINJA_CLIMB, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\collect.wav", eSoundID::SOUND_NINJA_COLLECT, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\hit.wav", eSoundID::SOUND_NINJA_HIT, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\hitted.wav", eSoundID::SOUND_NINJA_HITTED, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\jump.wav", eSoundID::SOUND_NINJA_JUMP, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\rocket.wav", eSoundID::SOUND_ROCKET, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\throwstar.wav", eSoundID::SOUND_THROW_STAR, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\windmilstar.wav", eSoundID::SOUND_WINDMIL_STAR, _lpDSound);
 }
 SoundBuffer* SoundManagerDx9::getSoundBuffer(eSoundID eID)
 {

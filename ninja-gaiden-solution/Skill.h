@@ -3,7 +3,6 @@
 
 #include "DynamicObject.h"
 #include "EIDTypeSkill.h"
-#include "EDirectAttack.h"
 #include "EIDItem.h"
 #include "CCamera.h"
 

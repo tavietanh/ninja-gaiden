@@ -1,4 +1,5 @@
 #include "Boss3.h"
+#include "CGlobal.h"
 
 #define VELOC_MOVE_RIGHT 1.3f
 #define VELOC_MOVE_LEFT -1.3f
@@ -83,11 +84,10 @@ void Boss3::UpdateCollision(CObjectDx9* checkingObject)
 				Skill* temp = (Skill*)checkingObject;
 				temp->setObjectState(eObjectState::STATE_DEATH);
 				healthBoss--;
-				char key[255];
-				sprintf_s(key, "FPS: %.3f \n", healthBoss);
-				OutputDebugString(key);
+				CGlobal::healthBoss = healthBoss;
 				if(healthBoss==0)
 				{
+					CGlobal::score += 1000;
 					this->m_ObjectState = eObjectState::STATE_BEFORE_DEATH;
 					this->getPhysic()->setVelocityY(0.0f);
 					this->getPhysic()->setVelocityX(0.0f);
@@ -200,6 +200,7 @@ void Boss3::Update()
 				countBullet = 0;
 			}
 			countBullet++;
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_BOSS)->Play();
 			m_ObjectState = eObjectState::STATE_JUMP;
 		}
 		break;

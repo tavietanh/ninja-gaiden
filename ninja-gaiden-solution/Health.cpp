@@ -38,7 +38,8 @@ void Health::UpdateCollision(CObjectDx9* checkingObject)
 				{
 					isDead = true;
 					temp->SetInvulnerable(true);
-					temp->setItemNinja(eIDSkillNinja::ITEM_HEALTH);
+					temp->setItemNinja(eIDItem::ITEM_HEALTH);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

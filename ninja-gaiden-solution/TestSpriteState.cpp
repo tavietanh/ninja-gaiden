@@ -9,6 +9,9 @@ void TestSpriteState::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	SkillManager::getInstance()->Initialize();
 	m_Grid->BuildGrid(mapPath.c_str(), (eSpriteID)(map));
 	Camera::getInstance()->setMaxWidth(CGlobal::MapWidth);
+	this->m_SoundBackGround = SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_BACKGROUND_1);
+	m_SoundBackGround->Repeat();
+	m_background.Initialize();
 }
 
 float scalexxx = 1.0f;
@@ -21,6 +24,13 @@ void TestSpriteState::HandleInput()
 void TestSpriteState::Update()
 {
 
+	if (CGlobal::healthNinja == 0)
+	{
+		m_SoundBackGround->Stop();
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_DEAD)->Play();
+		SceneManagerDx9::getInstance()->ReplaceBy(new TestSpriteState(eIDSceneGame::TEST_SPRITE, 1));
+		CGlobal::healthNinja = 16;
+	}
 	Camera::getInstance()->UpdateCamera(&m_Ninja->getPositionVec3());
 	
 	m_Ninja->UpdateAnimation();
@@ -59,6 +69,7 @@ void TestSpriteState::Render(SPRITEHANDLE _lpDSpriteHandle)
 	m_Ninja->Render(_lpDSpriteHandle);
 	ItemManager::getInstance()->Render(_lpDSpriteHandle);
 	SkillManager::getInstance()->Render(_lpDSpriteHandle);
+	m_background.Render(_lpDSpriteHandle);
 }
 
 void TestSpriteState::Pause()

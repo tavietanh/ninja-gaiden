@@ -38,7 +38,8 @@ void Flames::UpdateCollision(CObjectDx9* checkingObject)
 				{
 					isDead = true;
 					temp->SetInvulnerable(true);
-					temp->setSkillNinja(eIDSkillNinja::SKILL_FLAMES);
+					temp->setSkillNinja(eIDItem::SKILL_FLAMES);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

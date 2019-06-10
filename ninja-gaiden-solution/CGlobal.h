@@ -3,6 +3,7 @@
 
 #include "EObjectID.h"
 #include "CObjectDx9.h"
+#include "EIDItem.h"
 
 class CGlobal
 {
@@ -15,6 +16,10 @@ public:
 	static int	MapName;
 	static int	MapWidth;
 	static int	MapHeight;
+	static int	healthNinja;
+	static int	healthBoss;
+	static eIDItem Item;
+	static int score;
 };
 
 bool IsMovementObject(eObjectID type);

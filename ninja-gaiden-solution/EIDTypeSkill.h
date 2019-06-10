@@ -11,5 +11,6 @@ enum eIDTypeSkill
 	BULLET_MACHINE_GUN,
 	ROCKET_ENEMY,
 	BULLET_BOSS,
+	
 };
 #endif

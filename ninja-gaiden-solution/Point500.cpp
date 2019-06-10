@@ -38,7 +38,9 @@ void Point500::UpdateCollision(CObjectDx9* checkingObject)
 				{
 					isDead = true;
 					temp->SetInvulnerable(true);
-					temp->setItemNinja(eIDSkillNinja::ITEM_500_POINT);
+					temp->setItemNinja(eIDItem::ITEM_500_POINT);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
+					CGlobal::score += 500;
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

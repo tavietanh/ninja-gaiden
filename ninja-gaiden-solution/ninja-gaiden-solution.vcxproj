@@ -122,6 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="background.h" />
     <ClInclude Include="Boss3.h" />
     <ClInclude Include="CAnimationDx9.h" />
     <ClInclude Include="CCamera.h" />
@@ -139,7 +140,6 @@
     <ClInclude Include="CTimeSpanDx9.h" />
     <ClInclude Include="DSutil.h" />
     <ClInclude Include="DynamicObject.h" />
-    <ClInclude Include="EDirectAttack.h" />
     <ClInclude Include="EIDSceneGame.h" />
     <ClInclude Include="EIDItem.h" />
     <ClInclude Include="EIDTypeSkill.h" />
@@ -195,6 +195,7 @@
     <ClInclude Include="WindmilStar.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
     <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="CAnimationDx9.cpp" />
     <ClCompile Include="CCamera.cpp" />

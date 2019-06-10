@@ -13,6 +13,7 @@
 #include <dsound.h>
 #include <DXGI.h>
 #include "TestSpriteState.h"
+#include "SoundMangerDx9.h"
 // Factory designPattern
 
 class CGame

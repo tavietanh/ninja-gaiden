@@ -84,6 +84,8 @@ void EnemyRocket::UpdateCollision(CObjectDx9* checkingObject)
 				Skill* temp = (Skill*)checkingObject;
 				if (temp->getTypeSkill() != eIDTypeSkill::NINJA_WINDMIL_STAR)
 					temp->setObjectState(eObjectState::STATE_DEATH);
+				SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_EXPLOSION)->Play();
+				CGlobal::score += 200;
 				this->m_ObjectState = eObjectState::STATE_BEFORE_DEATH;
 				this->getPhysic()->setVelocityY(0.0f);
 				this->getPhysic()->setVelocityX(0.0f);

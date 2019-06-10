@@ -38,7 +38,8 @@ void TenPower::UpdateCollision(CObjectDx9* checkingObject)
 				{
 					isDead = true;
 					temp->SetInvulnerable(true);
-					temp->setItemNinja(eIDSkillNinja::ITEM_10_POWER);
+					temp->setItemNinja(eIDItem::ITEM_10_POWER);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

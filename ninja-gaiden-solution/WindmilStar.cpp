@@ -38,7 +38,8 @@ void WindMilStar::UpdateCollision(CObjectDx9* checkingObject)
 				{
 					isDead = true;
 					temp->SetInvulnerable(true);
-					temp->setSkillNinja(eIDSkillNinja::SKILL_WINDMIL_STAR);
+					temp->setSkillNinja(eIDItem::SKILL_WINDMIL_STAR);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

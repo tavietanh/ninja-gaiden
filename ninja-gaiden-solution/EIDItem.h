@@ -1,7 +1,7 @@
 #ifndef __EIDSKILL_H__
 #define __EIDSKILL_H__
 
-enum eIDSkillNinja
+enum eIDItem
 {
 	SKILL_SWORD,
 	SKILL_FLAMES,

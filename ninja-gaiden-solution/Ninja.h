@@ -30,8 +30,8 @@ class Ninja : public DynamicObject
 	int maxClimb;
 	int minClimb;
 	D3DXVECTOR3 GetStartPositionOfSkill(float x,float y);
-	eIDSkillNinja m_SkillNinja;
-	eIDSkillNinja m_ItemNinja;
+	eIDItem m_SkillNinja;
+	eIDItem m_ItemNinja;
 	int UpdateInvulnerableAnimation();
 	int HandleInputSkilling();
 	int HandleInputHangState();
@@ -70,8 +70,8 @@ public:
 	void UseSkill();
 	void Initialize();
 	void SetFlag();
-	void setSkillNinja(eIDSkillNinja _skillNinja) { this->m_SkillNinja = _skillNinja; };
-	void setItemNinja(eIDSkillNinja _itemNinja) { this->m_ItemNinja = _itemNinja; };
+	void setSkillNinja(eIDItem _skillNinja) { this->m_SkillNinja = _skillNinja; };
+	void setItemNinja(eIDItem _itemNinja) { this->m_ItemNinja = _itemNinja; };
 	void setRectangleCheckingObjectBelow();
 	void Release();
 	void Render(SPRITEHANDLE spriteHandle);

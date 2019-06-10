@@ -9,6 +9,7 @@
 #include "EDirection.h"
 #include "IDDirection.h"
 #include "SpriteManager.h"
+#include "SoundMangerDx9.h"
 #include "Box.h"
 
 class CObjectDx9

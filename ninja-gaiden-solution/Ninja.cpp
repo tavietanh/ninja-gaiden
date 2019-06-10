@@ -27,7 +27,6 @@ Ninja::Ninja(D3DXVECTOR3 _position, eDirection _direction, eObjectID _objectID)
 {
 	m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 	m_NinjaSprite = new NinjaSpirte();
-	m_DirectAttack = eDirectAttack::AD_RIGHT;
 	isJump = false;
 	isSetVelocityDeathState = false;
 	isFall = false;
@@ -40,7 +39,7 @@ Ninja::Ninja(D3DXVECTOR3 _position, eDirection _direction, eObjectID _objectID)
 	isInvulnerable = true;
 	prePosX = 0;
 	finalPosX = 0;
-	setSkillNinja(eIDSkillNinja::SKILL_WINDMIL_STAR);
+	setSkillNinja(eIDItem::SKILL_WINDMIL_STAR);
 }
 
 int Ninja::CheckOutBottomCamera()
@@ -49,6 +48,7 @@ int Ninja::CheckOutBottomCamera()
 	{
 		if (m_ObjectState != eObjectState::STATE_NINJA_DEAD)
 		{
+			CGlobal::healthNinja = 0;
 			m_ObjectState = eObjectState::STATE_NINJA_DEAD;
 		}
 		isFall = false;
@@ -124,13 +124,14 @@ void Ninja::UpdateMovement()
 {
 	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
 	{
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_HIT)->Play();
 		if (m_Direction == eDirection::LEFT)
 		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-18, 4), D3DXVECTOR2(0.0f, 0.0f), 0);
 		}
 		if (m_Direction == eDirection::RIGHT)
 		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(0.0f, 0.0f), 0);
+			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(18, 4), D3DXVECTOR2(0.0f, 0.0f), 0);
 		}
 	}
 }
@@ -138,6 +139,7 @@ void Ninja::SitHit()
 {
 	if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_SWORD) < 1)
 	{
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_HIT)->Play();
 		if (m_Direction == eDirection::LEFT)
 		{
 			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_SWORD, GetStartPositionOfSkill(-14, 6), D3DXVECTOR2(0.0f, 0.0f), 0);
@@ -279,6 +281,7 @@ int Ninja::HandleInputHangState()
 	{
 		if (CInputDx9::getInstance()->IsKeyRightDownAndKeyXDown())
 		{
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_JUMP)->Play();
 			m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 			m_Physic->setVelocityY(VELOCITY_Y_JUMP);
 			return 0;
@@ -288,6 +291,7 @@ int Ninja::HandleInputHangState()
 	{
 		if (CInputDx9::getInstance()->IsKeyLeftDownAndKeyXDown())
 		{
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_JUMP)->Play();
 			m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 			m_Physic->setVelocityY(VELOCITY_Y_JUMP);
 			m_Physic->setVelocityX(-0.6f);
@@ -305,14 +309,6 @@ int Ninja::HandleInputHangState()
 }
 int Ninja::HandleInputSitState()
 {
-	if (m_Direction == eDirection::RIGHT)
-	{
-		m_DirectAttack = eDirectAttack::AD_RIGHT;
-	}
-	if (m_Direction == eDirection::LEFT)
-	{
-		m_DirectAttack = eDirectAttack::AD_LEFT;
-	}
 	if (!CInputDx9::getInstance()->IsKeyDown(DIK_DOWN) || CInputDx9::getInstance()->IsKeyUpDownAndKeyDownDown())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_IDLE;
@@ -337,14 +333,6 @@ int Ninja::HandleInputSitHitState()
 int Ninja::HandleInputIdleState()
 {
 	m_Physic->setVelocityX(0.0f);
-	if (m_Direction == eDirection::LEFT)
-	{
-		m_DirectAttack = eDirectAttack::AD_LEFT;
-	}
-	if (m_Direction == eDirection::RIGHT)
-	{
-		m_DirectAttack = eDirectAttack::AD_RIGHT;
-	}
 	if (CInputDx9::getInstance()->IsKeyLeftUpAndKeyRightDown() || CInputDx9::getInstance()->IsKeyLeftDownAndKeyRightUp())
 	{
 		m_ObjectState = eObjectState::STATE_NINJA_RUN;
@@ -357,6 +345,7 @@ int Ninja::HandleInputIdleState()
 	}
 	if (CInputDx9::getInstance()->IsKeyDown(DIK_X))
 	{
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_JUMP)->Play();
 		m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 		m_Physic->setVelocityY(VELOCITY_Y_JUMP);
 		return 0;
@@ -382,14 +371,12 @@ int Ninja::HandleInputJumpState()
 		if(m_Direction == eDirection::LEFT)
 			m_Physic->setVelocityX(VELOCITY_X_MOVE_TO_RIGHT- 0.5f);
 		else m_Physic->setVelocityX(VELOCITY_X_MOVE_TO_RIGHT);
-		m_DirectAttack = eDirectAttack::AD_RIGHT;
 	}
 	if (CInputDx9::getInstance()->IsKeyLeftDownAndKeyRightUp())
 	{
 		if (m_Direction == eDirection::LEFT)
 			m_Physic->setVelocityX(VELOCITY_Y_MOVE_TO_LEFT);
 		else m_Physic->setVelocityX(VELOCITY_Y_MOVE_TO_LEFT+0.5f);
-		m_DirectAttack = eDirectAttack::AD_LEFT;
 	}
 	if (CInputDx9::getInstance()->IsKeyUpDownAndKeyDownUp())
 	{
@@ -463,6 +450,7 @@ int Ninja::HandleInputRunState()
 	}
 	if (CInputDx9::getInstance()->IsKeyDown(DIK_X))
 	{
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_JUMP)->Play();
 		m_ObjectState = eObjectState::STATE_NINJA_JUMP;
 		m_Physic->setVelocityY(VELOCITY_Y_JUMP);
 
@@ -505,6 +493,7 @@ void Ninja::UseSkill()
 	case SKILL_FLAMES:
 		for (int i = 0; i < 3; i++)
 		{
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_FLAMES)->Play();
 			if (m_Direction == eDirection::LEFT)
 			{
 				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-10, 0), D3DXVECTOR2(-1.0f, 2.0f*float(10+i*2)/10), 0);
@@ -532,6 +521,7 @@ void Ninja::UseSkill()
 		}
 		break;
 	case SKILL_THROW_STAR:
+		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_THROW_STAR)->Play();
 		if (m_Direction == eDirection::LEFT)
 		{
 			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-3.0f, 0.0f), 0);
@@ -546,6 +536,7 @@ void Ninja::UseSkill()
 	case SKILL_WINDMIL_STAR:
 		if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_WINDMIL_STAR) < 1)
 		{
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_WINDMIL_STAR)->Play();
 			if (m_Direction == eDirection::LEFT)
 			{
 				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-2.5f, 0.0f), -0.05f);
@@ -646,13 +637,6 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 {
 	setRectangleCheckingObjectBelow();
 	IDDirection collideDirection = this->m_Collision->CheckCollision(this, checkingObject);
-	if (checkingObject->getTypeObject() == ETypeObject::VIRTUAL_OBJECT)
-	{
-		if (Intersect(checkingObject->getBound(), m_RectangleCheckingObjectBelow))
-		{
-			m_objectBelowCurrent.push_back(checkingObject);
-		}
-	}
 	
 	if (collideDirection != IDDirection::DIR_NONE)
 	{
@@ -680,6 +664,7 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 					}
 					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
 					{
+						SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_CLIMB)->Play();
 						m_ObjectState = eObjectState::STATE_NINJA_HANG;
 						this->m_Position.x += this->m_Collision->m_MoveX;
 						m_Physic->setVelocityX(0.0f);
@@ -694,6 +679,7 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 					}
 					if (m_ObjectState == eObjectState::STATE_NINJA_JUMP)
 					{
+						SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_CLIMB)->Play();
 						m_ObjectState = eObjectState::STATE_NINJA_HANG;
 						this->m_Position.x += this->m_Collision->m_MoveX;
 						m_Physic->setVelocityX(0.0f);
@@ -748,7 +734,9 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 				}
 				if (checkingObject->getObjectState() != eObjectState::STATE_BEFORE_DEATH && checkingObject->getObjectState() != eObjectState::STATE_DEATH)
 				{
-						m_ObjectState = eObjectState::STATE_NINJA_DEAD;
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_HITTED)->Play();
+					CGlobal::healthNinja--;
+					m_ObjectState = eObjectState::STATE_NINJA_DEAD;
 				}
 				break;
 			case eObjectID::SKILL_NINJA:
@@ -769,6 +757,7 @@ void Ninja::UpdateCollision(CObjectDx9* checkingObject)
 			break;
 		}
 	}
+	CGlobal::Item = m_SkillNinja;
 }
 void Ninja::Update()
 {
@@ -776,6 +765,7 @@ void Ninja::Update()
 }
 void Ninja::Render(SPRITEHANDLE spriteHandle)
 {
+	
 	D3DXCOLOR color;
 	if (isInvulnerable)
 	{

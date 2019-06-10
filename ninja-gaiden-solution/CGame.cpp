@@ -145,6 +145,17 @@ bool CGame::InitializeDirect3DSpriteHandle()
 
 bool CGame::InitializeDirectSound()
 {
+	HRESULT hr;
+	hr = DirectSoundCreate8(0, &m_lpDirectSound, 0);
+	if (FAILED(hr))
+	{
+		return false;
+	}
+	hr = m_lpDirectSound->SetCooperativeLevel(this->m_handleWindow, DSSCL_PRIORITY);
+	if (FAILED(hr))
+	{
+		return false;
+	}
 	return true;
 }
 
@@ -164,8 +175,9 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	CInputDx9::getInstance()->InitializeMouseDevice(m_handleWindow);
 	CInputDx9::getInstance()->InitializeKeyBoardDevice(m_handleWindow);
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
+	SoundManagerDx9::getInstance()->LoadAllSoundBuffer(m_lpDirectSound);
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
-	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,2));
+	SceneManagerDx9::getInstance()->AddElement(new TestSpriteState(eIDSceneGame::TEST_SPRITE,1));
 	return true;
 }
 
@@ -241,6 +253,7 @@ void CGame::Exit()
 		SAFE_RELEASE(m_lpDirect3DDevice)
 
 		CInputDx9::getInstance()->Release();
+	SoundManagerDx9::getInstance()->Release();
 	SpriteManager::getInstance()->Release();
 	SceneManagerDx9::getInstance()->ClearAll();
 }

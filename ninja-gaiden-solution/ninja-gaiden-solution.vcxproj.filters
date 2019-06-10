@@ -166,6 +166,9 @@
     <Filter Include="Framework\Sound">
       <UniqueIdentifier>{e27024d9-2bc3-41e8-8f33-9d06038ed3c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Object\Background">
+      <UniqueIdentifier>{2c29e8b5-d3e1-4e66-9a33-1a09420e5368}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCamera.h">
@@ -330,9 +333,6 @@
     <ClInclude Include="WindmilStar.h">
       <Filter>Game Object\Item\Weaponry\Windmil Star</Filter>
     </ClInclude>
-    <ClInclude Include="EDirectAttack.h">
-      <Filter>Framework\Global</Filter>
-    </ClInclude>
     <ClInclude Include="Boss3.h">
       <Filter>Game Object\Enemy\Boss</Filter>
     </ClInclude>
@@ -380,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="eSoundID.h">
       <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
+      <Filter>Game Object\Background</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -553,6 +556,9 @@
     </ClCompile>
     <ClCompile Include="SoundBuffer.cpp">
       <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>Game Object\Background</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

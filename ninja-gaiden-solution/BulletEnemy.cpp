@@ -79,6 +79,8 @@ void BulletEnemy::UpdateCollision(CObjectDx9* checkingObject)
 					isDead = true;
 					this->getPhysic()->setVelocityX(0.0f);
 					this->getPhysic()->setVelocityY(0.0f);
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_EXPLOSION)->Play();
+					CGlobal::score += 200;
 					this->m_ObjectState = STATE_BEFORE_DEATH;
 			}
 			break;

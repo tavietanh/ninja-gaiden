@@ -25,6 +25,7 @@ void EnemyPanther::Initialize()
 	this->m_Physic->setVelocity(D3DXVECTOR2(0, 0));
 	this->m_Physic->setAccelerate(D3DXVECTOR2(0, -0.01f));
 	m_Position.z = 1.0f;
+	m_Physic->setVelocityX(VELOC_MOVE_LEFT);
 	if (m_Position.x>CGlobal::Ninja_X)
 		m_Direction = eDirection::LEFT;
 	else m_Direction = eDirection::RIGHT;
@@ -69,6 +70,8 @@ void EnemyPanther::UpdateCollision(CObjectDx9* checkingObject)
 				Skill* temp = (Skill*)checkingObject;
 				if (temp->getTypeSkill() != eIDTypeSkill::NINJA_WINDMIL_STAR)
 					temp->setObjectState(eObjectState::STATE_DEATH);
+				SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_EXPLOSION)->Play();
+				CGlobal::score += 200;
 				this->m_ObjectState = eObjectState::STATE_BEFORE_DEATH;
 				this->getPhysic()->setVelocityY(0.0f);
 				this->getPhysic()->setVelocityX(0.0f);

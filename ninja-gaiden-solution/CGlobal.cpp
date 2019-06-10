@@ -11,6 +11,10 @@ bool CGlobal::IsMute = false;
 int CGlobal::MapName = 0;
 int	CGlobal::MapWidth = 0;
 int	CGlobal::MapHeight = 0;
+int CGlobal::healthBoss = 16;
+int CGlobal::healthNinja = 16;
+eIDItem CGlobal::Item = eIDItem::SKILL_JUMP_HIT;
+int CGlobal::score = 123456;
 bool IsMovementObject(eObjectID id)
 {
 	switch (id)

@@ -14,6 +14,8 @@
 #include "VirtualObject.h"
 #include <list>
 #include "Grid.h"
+#include "SoundMangerDx9.h"
+#include "background.h"
 
 #define CENTERX 400
 #define CENTERY 300
@@ -25,6 +27,8 @@ private:
 	Grid*		m_Grid;
 	int			map;
 	CSpriteDx9* testSprite;
+	SoundBuffer*		m_SoundBackGround;
+	background	m_background;
 public:
 	TestSpriteState(eIDSceneGame ID, int _map) : GameScene(ID) { map = _map; }
 	~TestSpriteState() {}
