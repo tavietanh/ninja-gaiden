@@ -20,6 +20,8 @@ public:
 	static int	healthBoss;
 	static eIDItem Item;
 	static int score;
+	static int timer;
+	static int skills;
 };
 
 bool IsMovementObject(eObjectID type);

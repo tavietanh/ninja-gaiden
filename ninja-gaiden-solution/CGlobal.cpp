@@ -14,7 +14,9 @@ int	CGlobal::MapHeight = 0;
 int CGlobal::healthBoss = 16;
 int CGlobal::healthNinja = 16;
 eIDItem CGlobal::Item = eIDItem::SKILL_JUMP_HIT;
-int CGlobal::score = 123456;
+int CGlobal::score = 12345;
+int CGlobal::timer = 150;
+int CGlobal::skills = 50;
 bool IsMovementObject(eObjectID id)
 {
 	switch (id)

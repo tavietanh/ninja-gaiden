@@ -40,6 +40,7 @@ void TenPower::UpdateCollision(CObjectDx9* checkingObject)
 					temp->SetInvulnerable(true);
 					temp->setItemNinja(eIDItem::ITEM_10_POWER);
 					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_NINJA_COLLECT)->Play();
+					CGlobal::skills += 10;
 					this->m_ObjectState = STATE_DEATH;
 				}
 			}

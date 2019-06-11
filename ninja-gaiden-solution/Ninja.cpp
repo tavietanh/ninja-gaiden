@@ -50,6 +50,7 @@ int Ninja::CheckOutBottomCamera()
 		{
 			CGlobal::healthNinja = 0;
 			m_ObjectState = eObjectState::STATE_NINJA_DEAD;
+			
 		}
 		isFall = false;
 		m_timeBeforeDeadBottom += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
@@ -236,18 +237,18 @@ int Ninja::HandleInputDeadState()
 		isInvulnerable = true;
 	}
 	m_timeDeath += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
-	if (m_timeDeath > 2000)
-	{
-		m_timeDeath = 0;
-		isSetVelocityDeathState = false;
-		m_ObjectState = eObjectState::STATE_NINJA_JUMP;
-		m_Position.x = (float)(Camera::getInstance()->getBound().left + 128);
-		m_Position.y = (float)(Camera::getInstance()->getBound().top - 32);
-		this->m_Physic->setAccelerate(D3DXVECTOR2(0.0f, -0.1f));
-		m_Physic->setVelocityX(0.0f);
-		m_Physic->setVelocityY(0.0f);
-		isInvulnerable = true;
-	}
+	//if (m_timeDeath > 2000)
+	//{
+	//	m_timeDeath = 0;
+	//	isSetVelocityDeathState = false;
+	//	m_ObjectState = eObjectState::STATE_NINJA_JUMP;
+	//	m_Position.x = (float)(Camera::getInstance()->getBound().left + 128);
+	//	m_Position.y = (float)(Camera::getInstance()->getBound().top - 32);
+	//	this->m_Physic->setAccelerate(D3DXVECTOR2(0.0f, -0.1f));
+	//	m_Physic->setVelocityX(0.0f);
+	//	m_Physic->setVelocityY(0.0f);
+	//	isInvulnerable = true;
+	//}
 	return 0;
 }
 int Ninja::HandleInputSkillState()
@@ -491,59 +492,71 @@ void Ninja::UseSkill()
 	case SKILL_SWORD:
 		break;
 	case SKILL_FLAMES:
-		for (int i = 0; i < 3; i++)
+		if (CGlobal::skills >= 5)
 		{
-			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_FLAMES)->Play();
-			if (m_Direction == eDirection::LEFT)
+			for (int i = 0; i < 3; i++)
 			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-10, 0), D3DXVECTOR2(-1.0f, 2.0f*float(10+i*2)/10), 0);
-			}
-			if (m_Direction == eDirection::RIGHT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(10, 0), D3DXVECTOR2(1.0f, 2.0f*float(10 + i*2) / 10), 0);
-			}
-			if (m_Direction == eDirection::LEFT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, -4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
-			}
-			if (m_Direction == eDirection::RIGHT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, -4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
-			}
-			if (m_Direction == eDirection::LEFT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, 4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
-			}
-			if (m_Direction == eDirection::RIGHT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, 4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				CGlobal::skills -= 5;
+				SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_FLAMES)->Play();
+				if (m_Direction == eDirection::LEFT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-10, 0), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
+				if (m_Direction == eDirection::RIGHT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(10, 0), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
+				if (m_Direction == eDirection::LEFT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, -4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
+				if (m_Direction == eDirection::RIGHT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, -4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
+				if (m_Direction == eDirection::LEFT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(-18, 4), D3DXVECTOR2(-1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
+				if (m_Direction == eDirection::RIGHT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_FLAMES, GetStartPositionOfSkill(18, 4), D3DXVECTOR2(1.0f, 2.0f*float(10 + i * 2) / 10), 0);
+				}
 			}
 		}
 		break;
 	case SKILL_THROW_STAR:
-		SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_THROW_STAR)->Play();
-		if (m_Direction == eDirection::LEFT)
+		if (CGlobal::skills >= 3)
 		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-3.0f, 0.0f), 0);
-		}
-		if (m_Direction == eDirection::RIGHT)
-		{
-			SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(3.0f, 0.0f), 0);
+			CGlobal::skills -= 3;
+			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_THROW_STAR)->Play();
+			if (m_Direction == eDirection::LEFT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-3.0f, 0.0f), 0);
+			}
+			if (m_Direction == eDirection::RIGHT)
+			{
+				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_THROW_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(3.0f, 0.0f), 0);
+			}
 		}
 		break;
 	case SKILL_JUMP_HIT:
 		break;
 	case SKILL_WINDMIL_STAR:
-		if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_WINDMIL_STAR) < 1)
+		if (CGlobal::skills >= 5)
 		{
-			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_WINDMIL_STAR)->Play();
-			if (m_Direction == eDirection::LEFT)
+			CGlobal::skills -= 5;
+			if (SkillManager::getInstance()->GetAmountSkillOfType(eIDTypeSkill::NINJA_WINDMIL_STAR) < 1)
 			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-2.5f, 0.0f), -0.05f);
-			}
-			if (m_Direction == eDirection::RIGHT)
-			{
-				SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(2.5f, 0.0f), -0.05f);
+				SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_WINDMIL_STAR)->Play();
+				if (m_Direction == eDirection::LEFT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(-14, 8), D3DXVECTOR2(-2.5f, 0.0f), -0.05f);
+				}
+				if (m_Direction == eDirection::RIGHT)
+				{
+					SkillManager::getInstance()->addSkillIntoList(eIDTypeSkill::NINJA_WINDMIL_STAR, GetStartPositionOfSkill(14, 8), D3DXVECTOR2(2.5f, 0.0f), -0.05f);
+				}
 			}
 		}
 		break;

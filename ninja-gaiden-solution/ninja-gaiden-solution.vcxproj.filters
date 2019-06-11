@@ -384,6 +384,12 @@
     <ClInclude Include="PlayScene.h">
       <Filter>GameScene</Filter>
     </ClInclude>
+    <ClInclude Include="BOX.h">
+      <Filter>Framework\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -412,9 +418,6 @@
     </ClCompile>
     <ClCompile Include="CTimeSpanDx9.cpp">
       <Filter>Framework\GameTime</Filter>
-    </ClCompile>
-    <ClCompile Include="CGame.cpp">
-      <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>Framework\Camera</Filter>
@@ -557,7 +560,13 @@
     <ClCompile Include="background.cpp">
       <Filter>Game Object\Background</Filter>
     </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
     <ClCompile Include="PlayScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
       <Filter>GameScene</Filter>
     </ClCompile>
   </ItemGroup>

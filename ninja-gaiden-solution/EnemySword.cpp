@@ -39,7 +39,7 @@ void EnemySword::UpdateAnimation()
 		break;
 	case STATE_ALIVE_MOVE:
 		m_Sprite = sprite_main;
-		m_Sprite->UpdateAnimation(250);
+		m_Sprite->UpdateAnimation(400);
 		break;
 	case STATE_BEFORE_DEATH:
 		m_Sprite = sprite_dead;

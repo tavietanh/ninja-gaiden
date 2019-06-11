@@ -18,7 +18,7 @@ void Boss3::Initialize()
 {
 	isDead = false;
 	m_ObjectState = eObjectState::STATE_ALIVE_IDLE;
-	sprite_dead = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(eSpriteID::SPRITE_EXPLOSION));
+	sprite_dead = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(eSpriteID::SPRITE_BOSS_EXPOSION));
 	sprite_jump = new CSpriteDx9(*SpriteManager::getInstance()->getSprite(eSpriteID::SPRITE_BOSS));
 	m_Sprite = sprite_jump;
 	m_TimeChangeState = 0;
@@ -56,7 +56,7 @@ void Boss3::UpdateAnimation()
 		m_Sprite->getAnimation()->setCurrentFrame(1);
 		break;
 	case STATE_BEFORE_DEATH:
-		m_Sprite = sprite_dead;
+		sprite_dead->UpdateAnimation(250);
 		break;
 	case STATE_DEATH:
 		break;
@@ -85,12 +85,14 @@ void Boss3::UpdateCollision(CObjectDx9* checkingObject)
 				temp->setObjectState(eObjectState::STATE_DEATH);
 				healthBoss--;
 				CGlobal::healthBoss = healthBoss;
-				if(healthBoss==0)
+				if (healthBoss == 0 && isDead == false)
 				{
 					CGlobal::score += 1000;
+					SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_BOSS_DEAD)->Play();
 					this->m_ObjectState = eObjectState::STATE_BEFORE_DEATH;
 					this->getPhysic()->setVelocityY(0.0f);
 					this->getPhysic()->setVelocityX(0.0f);
+					m_Physic->setAccelerate(D3DXVECTOR2(0, 0));
 					this->isDead = true;
 				}
 
@@ -208,11 +210,7 @@ void Boss3::Update()
 		break;
 	case STATE_BEFORE_DEATH:
 		m_TimeChangeState += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
-		if (m_TimeChangeState > 200)
-		{
-			m_Sprite->setScale(m_Sprite->getScale()*1.5f);
-		}
-		if (m_TimeChangeState > 215)
+		if (m_TimeChangeState > 5000)
 		{
 			m_ObjectState = eObjectState::STATE_DEATH;
 			m_TimeChangeState = 0;
@@ -237,8 +235,14 @@ void Boss3::Render(SPRITEHANDLE spriteHandle)
 		{
 			m_Sprite->setSpriteEffect(ESpriteEffect::None);
 		}
-
 		m_Sprite->Render(spriteHandle, getPositionVec2(), m_Sprite->getSpriteEffect(), m_Sprite->getRotate(), m_Sprite->getScale(), m_Position.z);
+		if (isDead)
+		{
+			sprite_dead->Render(spriteHandle, D3DXVECTOR2(m_Position.x + 15, m_Position.y + 10), m_Sprite->getSpriteEffect(), m_Sprite->getRotate(), m_Sprite->getScale(), m_Position.z);
+			sprite_dead->Render(spriteHandle, D3DXVECTOR2(m_Position.x - 12, m_Position.y + 10), m_Sprite->getSpriteEffect(), m_Sprite->getRotate(), m_Sprite->getScale(), m_Position.z);
+			sprite_dead->Render(spriteHandle, D3DXVECTOR2(m_Position.x + 15, m_Position.y - 10), m_Sprite->getSpriteEffect(), m_Sprite->getRotate(), m_Sprite->getScale(), m_Position.z);
+			sprite_dead->Render(spriteHandle, D3DXVECTOR2(m_Position.x - 18, m_Position.y - 10), m_Sprite->getSpriteEffect(), m_Sprite->getRotate(), m_Sprite->getScale(), m_Position.z);
+		}
 	}
 }
 

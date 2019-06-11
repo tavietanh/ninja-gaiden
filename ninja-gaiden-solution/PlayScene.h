@@ -6,7 +6,6 @@
 #include "CSpriteDx9.h"
 #include "SpriteManager.h"
 #include "CCamera.h"
-#include "MapReader.h"
 #include "Tile.h"
 #include "EnemyRun.h"
 #include "Markup.h"
@@ -20,7 +19,7 @@
 #define CENTERX 400
 #define CENTERY 300
 
-class TestSpriteState : public GameScene
+class PlayScene : public GameScene
 {
 private:
 	Ninja*		m_Ninja;
@@ -31,9 +30,10 @@ private:
 	background	m_background;
 	int m_timefreeze;
 	bool isDead;
+	int m_timer;
 public:
-	TestSpriteState(eIDSceneGame ID, int _map) : GameScene(ID) { map = _map; }
-	~TestSpriteState() {}
+	PlayScene(eIDSceneGame ID, int _map) : GameScene(ID) { map = _map; }
+	~PlayScene() {}
 	void InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice);
 	void HandleInput();
 	void Update();

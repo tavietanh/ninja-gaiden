@@ -1,6 +1,6 @@
 #include "PlayScene.h"
 
-void TestSpriteState::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
+void PlayScene::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 {
 	m_Grid = new Grid();
 	m_Ninja = new Ninja(D3DXVECTOR3(50,80 , 1), eDirection::RIGHT, eObjectID::NINJA);
@@ -10,6 +10,7 @@ void TestSpriteState::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	SkillManager::getInstance()->Initialize();
 	m_Grid->BuildGrid(mapPath.c_str(), (eSpriteID)(map));
 	Camera::getInstance()->setMaxWidth(CGlobal::MapWidth);
+	m_timer = 150;
 	switch (map)
 	{
 	case 1:
@@ -30,17 +31,22 @@ void TestSpriteState::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 
 float scalexxx = 1.0f;
 
-void TestSpriteState::HandleInput()
+void PlayScene::HandleInput()
 {
 	m_Ninja->HandleInput();
 }
 
-void TestSpriteState::Update()
+void PlayScene::Update()
 {
-
-	if (CGlobal::healthNinja == 0)
+	m_timer += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
+	if (m_timer > 2000)
 	{
-
+		CGlobal::timer -= 1;
+		m_timer = 0;
+	}
+	if (CGlobal::healthNinja == 0 || CGlobal::timer==0)
+	{
+		CGlobal::timer = 150;
 		m_SoundBackGround->Stop();
 		if (isDead==false)
 		{
@@ -48,9 +54,9 @@ void TestSpriteState::Update()
 			isDead = true;
 		}
 		m_timefreeze += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
-		if (m_timefreeze > 4000)
+		if (m_timefreeze > 8000)
 		{
-			SceneManagerDx9::getInstance()->ReplaceBy(new TestSpriteState(eIDSceneGame::TEST_SPRITE, map));
+			SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, map));
 			m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
 			CGlobal::healthNinja = 16;
 			m_timefreeze = 0;
@@ -60,13 +66,13 @@ void TestSpriteState::Update()
 	if (m_Ninja->getPositionVec2().x > CGlobal::MapWidth-20 && map == 1)
 	{
 		m_SoundBackGround->Stop();
-		SceneManagerDx9::getInstance()->ReplaceBy(new TestSpriteState(eIDSceneGame::TEST_SPRITE, 2));
+		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, 2));
 		m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
 	}
 	if (m_Ninja->getPositionVec2().x > CGlobal::MapWidth - 50 && map == 2)
 	{
 		m_SoundBackGround->Stop();
-		SceneManagerDx9::getInstance()->ReplaceBy(new TestSpriteState(eIDSceneGame::TEST_SPRITE, 3));
+		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, 3));
 		m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
 	}
 	Camera::getInstance()->UpdateCamera(&m_Ninja->getPositionVec3());
@@ -113,26 +119,26 @@ void TestSpriteState::Update()
 	ItemManager::getInstance()->Update();
 	ItemManager::getInstance()->UpdateCollision(m_Ninja);
 }
-void TestSpriteState::Render(SPRITEHANDLE _lpDSpriteHandle)
+void PlayScene::Render(SPRITEHANDLE _lpDSpriteHandle)
 {
+	m_background.Render(_lpDSpriteHandle);
 	m_Grid->Render(_lpDSpriteHandle);
 	m_Ninja->Render(_lpDSpriteHandle);
 	ItemManager::getInstance()->Render(_lpDSpriteHandle);
 	SkillManager::getInstance()->Render(_lpDSpriteHandle);
-	m_background.Render(_lpDSpriteHandle);
 }
 
-void TestSpriteState::Pause()
+void PlayScene::Pause()
 {
 
 }
 
-void TestSpriteState::Resume()
+void PlayScene::Resume()
 {
 
 }
 
-void TestSpriteState::Release()
+void PlayScene::Release()
 {
 	
 }

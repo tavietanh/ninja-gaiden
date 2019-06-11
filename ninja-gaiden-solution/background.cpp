@@ -26,8 +26,10 @@ void background::Render(SPRITEHANDLE _spriteHandler)
 	sprite_background->RenderWithoutTransform(_spriteHandler, D3DXVECTOR2(SCREEN_WIDTH/2, 200), ESpriteEffect::None, 0.0f, 1.0f, 1.0f);
 	RenderHealthBoss(_spriteHandler,173,192);
 	RenderHealthNinja(_spriteHandler,173, 200);
-	RenderItem(_spriteHandler, 106, 196);
-	RenderScore(_spriteHandler, 108, 207);
+	RenderItem(_spriteHandler, 108, 196);
+	RenderScore(_spriteHandler, 108, 208);
+	RenderTimer(_spriteHandler, 88, 200);
+	RenderSkill(_spriteHandler, 86, 192);
 }
 
 void background::Release()
@@ -126,6 +128,44 @@ void background::RenderScore(SPRITEHANDLE _spriteHandler, float x, float y)
 {
 	int a = CGlobal::score;
 	for (int i = 0; i < 6; i++)
+	{
+		int b = a % 10;
+		a = a / 10;
+		CSpriteDx9* temp = sprite_score;
+		temp->getAnimation()->setSourceRectAtIndex(b);
+		temp->RenderWithoutTransform(
+			_spriteHandler,
+			D3DXVECTOR2(x - (float)(8 * i), y),
+			ESpriteEffect::None,
+			0.0f,
+			1.0f,
+			1.0f);
+
+	}
+}
+void background::RenderTimer(SPRITEHANDLE _spriteHandler,float x,float y)
+{
+	int a = CGlobal::timer;
+	for (int i = 0; i < 3; i++)
+	{
+		int b = a % 10;
+		a = a / 10;
+		CSpriteDx9* temp = sprite_score;
+		temp->getAnimation()->setSourceRectAtIndex(b);
+		temp->RenderWithoutTransform(
+			_spriteHandler,
+			D3DXVECTOR2(x - (float)(8 * i), y),
+			ESpriteEffect::None,
+			0.0f,
+			1.0f,
+			1.0f);
+
+	}
+}
+void background::RenderSkill(SPRITEHANDLE _spriteHandler, float x, float y)
+{
+	int a = CGlobal::skills;
+	for (int i = 0; i < 2; i++)
 	{
 		int b = a % 10;
 		a = a / 10;

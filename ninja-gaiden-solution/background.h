@@ -20,6 +20,8 @@ public:
 	void RenderHealthBoss(SPRITEHANDLE spriteHandle, float x, float y);
 	void RenderItem(SPRITEHANDLE spriteHandle, float x, float y);
 	void RenderScore(SPRITEHANDLE spriteHandle, float x, float y);
+	void RenderTimer(SPRITEHANDLE spriteHandle, float x, float y);
+	void RenderSkill(SPRITEHANDLE spriteHandle, float x, float y);
 	void Release();
 };
 

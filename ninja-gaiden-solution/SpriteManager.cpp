@@ -56,6 +56,7 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemySword\\enemy_sword.png", eSpriteID::SPRITE_ENEMY_SWORD, 3, 1, 3);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\alivejump.png", eSpriteID::SPRITE_BOSS, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\bullet.png", eSpriteID::SPRITE_BULLET_BOSS, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\Boss\\boss_explosion.png", eSpriteID::SPRITE_BOSS_EXPOSION, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyBrownBat\\alivemove.png", eSpriteID::SPRITE_ENEMY_BROWN_BAT, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyEagle\\alivemove.png", eSpriteID::SPRITE_ENEMY_EAGLE, 2, 1, 2);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Enemy\\EnemyMachineGun\\move.png", eSpriteID::SPRITE_ENEMY_MACHINE_GUN_MOVE, 2, 1, 2);
