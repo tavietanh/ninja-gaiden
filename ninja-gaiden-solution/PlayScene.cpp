@@ -11,6 +11,11 @@ void PlayScene::InitializeState(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	m_Grid->BuildGrid(mapPath.c_str(), (eSpriteID)(map));
 	Camera::getInstance()->setMaxWidth(CGlobal::MapWidth);
 	m_timer = 150;
+	CGlobal::healthNinja = 16;
+	CGlobal::timer = 150;
+	CGlobal::skills = 50;
+	CGlobal::life = 1;
+	CGlobal::healthBoss = 16;
 	switch (map)
 	{
 	case 1:
@@ -50,29 +55,37 @@ void PlayScene::Update()
 		m_SoundBackGround->Stop();
 		if (isDead==false)
 		{
+			CGlobal::life -= 1;
 			SoundManagerDx9::getInstance()->getSoundBuffer(eSoundID::SOUND_DEAD)->Play();
 			isDead = true;
 		}
 		m_timefreeze += CGameTimeDx9::getInstance()->getElapsedGameTime().getMilliseconds();
 		if (m_timefreeze > 8000)
 		{
-			SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, map));
-			m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
-			CGlobal::healthNinja = 16;
-			m_timefreeze = 0;
-			isDead = false;
+			if (CGlobal::life <= 0)
+			{
+				SceneManagerDx9::getInstance()->ReplaceBy(new GameOverScene(eIDSceneGame::GAMEOVER));
+			}
+			else {
+				SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::PLAY, map));
+				m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
+				CGlobal::healthNinja = 16;
+				m_timefreeze = 0;
+				isDead = false;
+			}
+			
 		}
 	}
 	if (m_Ninja->getPositionVec2().x > CGlobal::MapWidth-20 && map == 1)
 	{
 		m_SoundBackGround->Stop();
-		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, 2));
+		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::PLAY, 2));
 		m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
 	}
 	if (m_Ninja->getPositionVec2().x > CGlobal::MapWidth - 50 && map == 2)
 	{
 		m_SoundBackGround->Stop();
-		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::TEST_SPRITE, 3));
+		SceneManagerDx9::getInstance()->ReplaceBy(new PlayScene(eIDSceneGame::PLAY, 3));
 		m_Ninja->setPosition(D3DXVECTOR3(50, 80, 1));
 	}
 	Camera::getInstance()->UpdateCamera(&m_Ninja->getPositionVec3());

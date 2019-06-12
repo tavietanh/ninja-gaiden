@@ -17,6 +17,7 @@ eIDItem CGlobal::Item = eIDItem::SKILL_JUMP_HIT;
 int CGlobal::score = 12345;
 int CGlobal::timer = 150;
 int CGlobal::skills = 50;
+int CGlobal::life = 2;
 bool IsMovementObject(eObjectID id)
 {
 	switch (id)

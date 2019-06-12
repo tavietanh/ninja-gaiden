@@ -1,5 +1,5 @@
-#ifndef TEST_SPRITE_STATE_H
-#define TEST_SPRITE_STATE_H
+#ifndef PLAY_SCENE_H
+#define PLAY_SCENE_H
 
 #include "GameScene.h"
 #include "SceneManagerDx9.h"
@@ -15,6 +15,8 @@
 #include "Grid.h"
 #include "SoundMangerDx9.h"
 #include "background.h"
+#include "MenuScene.h"
+#include "GameOverScene.h"
 
 #define CENTERX 400
 #define CENTERY 300

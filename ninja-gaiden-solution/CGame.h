@@ -13,6 +13,7 @@
 #include <dsound.h>
 #include <DXGI.h>
 #include "PlayScene.h"
+#include "MenuScene.h"
 #include "SoundMangerDx9.h"
 // Factory designPattern
 

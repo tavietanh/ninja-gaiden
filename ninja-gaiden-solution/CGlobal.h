@@ -22,6 +22,7 @@ public:
 	static int score;
 	static int timer;
 	static int skills;
+	static int life;
 };
 
 bool IsMovementObject(eObjectID type);

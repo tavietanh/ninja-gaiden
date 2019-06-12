@@ -162,6 +162,7 @@
     <ClInclude Include="Flames.h" />
     <ClInclude Include="FrameworkDefine.h" />
     <ClInclude Include="Freeze.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="EDirection.h" />
     <ClInclude Include="GifBird.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="FivePower.cpp" />
     <ClCompile Include="Flames.cpp" />
     <ClCompile Include="Freeze.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GifBird.cpp" />
     <ClCompile Include="GifButerfly.cpp" />
     <ClCompile Include="Grid.cpp" />

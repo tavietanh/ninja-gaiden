@@ -40,6 +40,7 @@ void SoundManagerDx9::LoadAllSoundBuffer(LPDIRECTSOUND8 _lpDSound)
 	this->LoadSoundBuffer("resources\\Sound\\throwstar.wav", eSoundID::SOUND_THROW_STAR, _lpDSound);
 	this->LoadSoundBuffer("resources\\Sound\\windmilstar.wav", eSoundID::SOUND_WINDMIL_STAR, _lpDSound);
 	this->LoadSoundBuffer("resources\\Sound\\bossdead.wav", eSoundID::SOUND_BOSS_DEAD, _lpDSound);
+	this->LoadSoundBuffer("resources\\Sound\\logo.wav", eSoundID::SOUND_LOGO, _lpDSound);
 }
 SoundBuffer* SoundManagerDx9::getSoundBuffer(eSoundID eID)
 {

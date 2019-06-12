@@ -87,6 +87,12 @@ void SpriteManager::InitializeListSprite(LPDIRECT3DDEVICE9 _lpDirectDevice)
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\healthbarfull.png", eSpriteID::SPRITE_HEALTH_BAR_FULL, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\healthbarlost.png", eSpriteID::SPRITE_HEALTH_BAR_EMPTY, 1, 1, 1);
 	LoadSpriteContent(_lpDirectDevice, "resources\\Character\\Item\\iconItem.png", eSpriteID::SPRITE_ICON_ITEM, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\tecmo.png", eSpriteID::SPRITE_MENU_TECMO, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\present.png", eSpriteID::SPRITE_MENU_PRESENT, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\ninja.png", eSpriteID::SPIRTE_MENU_NINJA, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\logo.png", eSpriteID::SPIRTE_MENU_LOGO, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\center.png", eSpriteID::SPRITE_MENU_CENTER, 1, 1, 1);
+	LoadSpriteContent(_lpDirectDevice, "resources\\Menu\\gameover.png", eSpriteID::SPRITE_MENU_GAME_OVER, 1, 1, 1);
 }
 
 void SpriteManager::Release()

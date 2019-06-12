@@ -19,5 +19,6 @@ enum eSoundID
 	SOUND_DEAD,
 	SOUND_FLAMES,
 	SOUND_BOSS_DEAD,
+	SOUND_LOGO,
 };
 #endif

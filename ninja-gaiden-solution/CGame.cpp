@@ -177,7 +177,7 @@ bool CGame::Initialize(HINSTANCE hInstance, bool isWindowed)
 	SpriteManager::getInstance()->InitializeListSprite(m_lpDirect3DDevice);
 	SoundManagerDx9::getInstance()->LoadAllSoundBuffer(m_lpDirectSound);
 	SceneManagerDx9::getInstance()->setDirectDevice(m_lpDirect3DDevice);
-	SceneManagerDx9::getInstance()->AddElement(new PlayScene(eIDSceneGame::TEST_SPRITE,1));
+	SceneManagerDx9::getInstance()->AddElement(new MenuScene(eIDSceneGame::MENU));
 	return true;
 }
 

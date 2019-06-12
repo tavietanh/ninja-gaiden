@@ -1,6 +1,8 @@
 #ifndef EIDSCENEGAME_H
 #define EIDSCENEGAME_H
 enum eIDSceneGame {
-	TEST_SPRITE = 1,
+	PLAY = 1,
+	MENU,
+	GAMEOVER,
 };
 #endif;

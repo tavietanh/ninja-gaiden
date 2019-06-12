@@ -390,6 +390,9 @@
     <ClInclude Include="MenuScene.h">
       <Filter>GameScene</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGlobal.cpp">
@@ -567,6 +570,9 @@
       <Filter>GameScene</Filter>
     </ClCompile>
     <ClCompile Include="MenuScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
       <Filter>GameScene</Filter>
     </ClCompile>
   </ItemGroup>
